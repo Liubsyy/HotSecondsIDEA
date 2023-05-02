@@ -16,11 +16,6 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/**
- * @author Liuzhipeng05
- * @Date: 2023/4/28 12:55 下午
- * Description:
- */
 public class HotDeployConfig {
     private String secret;
     private String remoteIp;
