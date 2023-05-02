@@ -1,0 +1,78 @@
+<idea-plugin>
+  <id>liubsyyflymoon</id>
+  <name>HotSecondsClientIDEA</name>
+  <version>1.0</version>
+  <vendor email="liubsyy@gmail.com" url="http://www.yingying.com">liubsyy</vendor>
+
+  <description>
+    This is a plug-in that can realize remote hot deployment, and supports uploading and hot loading of java, jar, html, css, xml and other files.
+    In IDEA, you need a hot-seconds.xml to define the configuration to be hot to the remote. The demo of hotseconds.xml is as follows:
+
+    &lt;liubs&gt;
+    &lt;secret&gt;aaaaaaaabbbbbbbbbccccccccc&lt;/secret&gt;
+    &lt;remote_ip&gt;199.1.1.1&lt;/remote_ip&gt;
+    &lt;remote_port&gt;2023&lt;/remote_port&gt;
+    &lt;timeout&gt;3000&lt;/timeout&gt;
+    &lt;auto_hotdeploy&gt;false&lt;/auto_hotdeploy&gt;
+    &lt;mappings&gt;
+    &lt;mapping&gt;
+    &lt;file_type&gt;.html,css,js&lt;/file_type&gt;
+    &lt;path&gt;$rootPath$/src/main/webapp&lt;/path&gt;
+    &lt;remote-path&gt;/opt/xx/webapps&lt;/remote-path&gt;
+    &lt;/mapping&gt;
+    &lt;mapping&gt;
+    &lt;file_type&gt;.class&lt;/file_type&gt;
+    &lt;path&gt;$rootPath$/target/classes&lt;/path&gt;
+    &lt;remote-path&gt;/opt/xx/webapps/WEB-INF/classes&lt;/remote-path&gt;
+    &lt;/mapping&gt;
+    &lt;/mappings&gt;
+    &lt;/liubs&gt;
+
+    At the same time, you need to add the corresponding development port of the socket on the remote server to realize the function of hot deployment and file upload.
+  </description>
+
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.java</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <projectService serviceImplementation="com.liubs.ff.hotdeploy.HotDeployBean"/>
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="switchState" class="com.liubs.ff.ui.SwitchStateRunMenu" text="Remote HotDeploy"
+            icon="MyIcons.HARRY_POTTER"
+            description="Remote HotDeployment">
+      <add-to-group group-id="RunMenu" anchor="first"/>
+    </action>
+    <action id="switchStateBar"
+            class="com.liubs.ff.ui.SwitchStateToolBar"
+            text="Remote HotDeployment"
+            description="Remote HotDeployment"
+            icon="MyIcons.HARRY_POTTER">
+      <add-to-group group-id="ToolbarRunGroup" anchor="before" relative-to-action="Debug"/>
+    </action>
+
+
+    <action id="hotDeployPopMenu" class="com.liubs.ff.ui.HotDeployPopMenu"
+            icon="MyIcons.MARIO"
+            text="Deployment This File"
+            description="Deployment This File">
+      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+    </action>
+    <action id="hotDeployPopMenuJar" class="com.liubs.ff.ui.HotDeployPopMenuJar"
+            icon="MyIcons.MERMAID"
+            text="Deployment This Jar"
+            description="Deployment This Jar">
+      <add-to-group group-id="EditorPopupMenu" anchor="before" relative-to-action="hotDeployPopMenu"/>
+    </action>
+
+  </actions>
+
+</idea-plugin>
