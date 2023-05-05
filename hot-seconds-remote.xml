@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 一键秒级远程热部署配置文件 -->
+<!-- 此配置文件一共两套，为hot-seconds.xml和hot-seconds-remote.xml -->
+<liubs>
+    <!-- 这个是本地和远程连接的唯一id，务必保证hot-seconds.xml和hot-seconds-remote.xml相等 -->
+    <secret>aaaaaaaabbbbbbbbbccccccccc</secret>
+
+    <!-- 远程端口 -->
+    <remote_port>2023</remote_port>
+
+    <init_delay>60000</init_delay>
+    
+    <!-- 普通java项目填 AppClassLoader,Tomcat项目填 ParallelWebappClassLoader, SpringBoot项目填 LaunchedURLClassLoader -->
+    <classloader>ParallelWebappClassLoader</classloader>
+    
+    <!-- 这里的扩展classname是热加载某个文件的前置和后置操作,需要实现IHotExtHandler接口 -->
+    <dev-ext>
+        <classname>com.liubs.ext.XXHandler</classname>
+    </dev-ext>
+    
+</liubs>
