@@ -4,6 +4,7 @@
 <!-- 此配置文件一共两套，为hot-seconds.xml和hot-seconds-remote.xml -->
 <!-- 此配置文件本地改完重新打开插件开关生效 -->
 <liubs>
+    <author>liubsyy</author>
     <!-- 这个是本地和远程连接的唯一id，务必保证本地和远程相等 -->
     <secret>aaaaaaaabbbbbbbbbccccccccc</secret>
 
