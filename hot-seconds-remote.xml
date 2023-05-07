@@ -11,7 +11,7 @@
 
     <init_delay>60000</init_delay>
     
-    <!-- 普通java项目填 AppClassLoader,Tomcat项目填 ParallelWebappClassLoader, SpringBoot项目填 LaunchedURLClassLoader -->
+    <!-- 普通java项目填 AppClassLoader,Tomcat项目填 WebappClassLoader或者ParallelWebappClassLoader, SpringBoot项目填 LaunchedURLClassLoader -->
     <classloader>ParallelWebappClassLoader</classloader>
     
     <!-- 这里的扩展classname是热加载某个文件的前置和后置操作,需要实现IHotExtHandler接口 -->
