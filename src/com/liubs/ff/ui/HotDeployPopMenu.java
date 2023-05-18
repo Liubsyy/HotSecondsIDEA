@@ -70,24 +70,7 @@ public class HotDeployPopMenu extends AnAction {
 
     @Override
     public void update(@NotNull AnActionEvent e) {
-        boolean display = false;
-        Project project = e.getProject();
-        HotDeployClient hotDeployClient = null;
-        if (project != null) {
-            HotDeployBean hotDeployBean = HotDeployBean.getInstance(project);
-            if(null != hotDeployBean) {
-                hotDeployClient = hotDeployBean.getHotDeployClient();
-                if(null != hotDeployClient &&  hotDeployClient.isOpen()){
-                    display = true;
-                }
-            }
-        }
-
-        // 根据SwitchStateToolBar的状态控制HotDeployPopMenu的可见性
-        e.getPresentation().setVisible(display);
-        if(display) {
-            e.getPresentation().setText("HotDeploy to remote "+hotDeployClient.getHotDeployConfig().getRemoteIp());
-        }
+  
     }
 
 }
