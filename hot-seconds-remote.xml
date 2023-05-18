@@ -9,7 +9,7 @@
     <!-- 远程端口 -->
     <remote_port>2023</remote_port>
 
-    <init_delay>60000</init_delay>
+    <init_delay>120000</init_delay>
     
     <!-- 普通java项目填 AppClassLoader,Tomcat项目填 WebappClassLoader或者ParallelWebappClassLoader, SpringBoot项目填 LaunchedURLClassLoader -->
     <classloader>ParallelWebappClassLoader</classloader>
