@@ -66,12 +66,6 @@
             description="Deployment This File">
       <add-to-group group-id="EditorPopupMenu" anchor="last"/>
     </action>
-    <action id="hotDeployPopMenuJar" class="com.liubs.ff.ui.HotDeployPopMenuJar"
-            icon="MyIcons.MERMAID"
-            text="Deployment This Jar"
-            description="Deployment This Jar">
-      <add-to-group group-id="EditorPopupMenu" anchor="before" relative-to-action="hotDeployPopMenu"/>
-    </action>
 
   </actions>
 
