@@ -3,7 +3,7 @@ The HotSeconds plugin is mainly used for hot deploying code to remote servers, w
 At present, only JDK 1.8 is supported. Support for higher versions will be considered in the future based on demand.
 
 ### HotSecondsServer Installation
-1.Upload HotSeconds1.0.zip to the server side, and run 'sh install.sh'<br>
+1.Upload HotSeconds1.0.zip to the server , and run 'sh install.sh'<br>
 2.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br>
 3.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
 Here, $path1 is the directory uploaded in the first step, and $path2 is the directory uploaded in the second step<br>
@@ -18,6 +18,6 @@ The 'secret' should match that of the remote server. By filling in the local and
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/install/use.png)
 <br>The rules for uploading directories correspond to the Path mappings configured in the second step.<br><br>
 
-### Plugin Shortcuts
+### Plugin Keymap
 In Keymap->Plugins->HotSecondsClient, you can customize shortcuts<br>
 For instance, you can set shortcuts for HotSeconds Start/Stop and Hot swap this file.
