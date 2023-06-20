@@ -8,7 +8,7 @@ support hot-deployment of all right-clicked files to the server, including java,
 modify code, add functions, add classes, etc.
 
 ## HotSecondsServer Installation
-1.Upload HotSeconds1.0.zip to the server , and run 'sh install.sh'<br>
+1.Upload HotSecondsServer.zip to the server , and run 'sh install.sh'<br>
 2.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br>
 3.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
 Here, $path1 is the directory uploaded in the step 1, and $path2 is the directory uploaded in the step 2.<br>
@@ -32,4 +32,4 @@ In Keymap->Plugins->HotSecondsClient, you can customize shortcuts<br>
 
 ## About extensions
 This plug-in is not a panacea. After all, each company has its own framework, and there are so many open source frameworks on the market, but this plug-in is compatible with everything, and can expand the pre-logic and post-logic of uploading files. <br>
-Copy IHotExtHandler.java in HotSeconds.zip to your project, implement this interface, and then configure your class name in hot-seconds-remote.xml, so that some logic that needs to refresh the cache and context can be done trigger.
+Copy IHotExtHandler.java in HotSecondsServer.zip to your project, implement this interface, and then configure your class name in hot-seconds-remote.xml, so that some logic that needs to refresh the cache and context can be done trigger.
