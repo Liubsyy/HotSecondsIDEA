@@ -21,3 +21,8 @@ The 'secret' should match that of the remote server. By filling in the local and
 ### Plugin Keymap
 In Keymap->Plugins->HotSecondsClient, you can customize shortcuts<br>
 For instance, you can set shortcuts for HotSeconds Start/Stop and Hot swap this file.
+
+
+### About extensions
+This plug-in is not a panacea. After all, each company has its own framework, and there are so many open source frameworks on the market, but this plug-in is compatible with everything, and can expand the pre-logic and post-logic of uploading files. <br>
+Copy IHotExtHandler.java in HotSeconds.zip to your project, implement this interface, and then configure your class name in hot-seconds-remote.xml, so that some logic that needs to refresh the cache and context can be done trigger.
