@@ -12,10 +12,10 @@ Here, $path1 is the directory uploaded in the first step, and $path2 is the dire
 1.Download and install HotSecondsClient from the plugin market<br>
 2.Go to the menu Run->HotSeconds Settings->Settings to add the server to connect to and configure<br>
 The 'secret' should match that of the remote server. By filling in the local and remote mapping paths, files in the local directory, including files in subfolders, can be uploaded to the remote server.<br>
-![](https://plugins.jetbrains.com/files/21635/34496-page/0da9a8c0-1d3d-47c3-835a-57f24d515967)
+![](https://github.com/thanple/HotSecondsIDEA/blob/master/install/hotseconds-setting.png)
 <br><br>
 3. Run->HotSeconds Start/Stop to activate the HotSeconds plugin. Right-click to hot deploy the selected files to the remote server.<br>
-![](https://plugins.jetbrains.com/files/21635/34496-page/ce17f97e-a614-4efe-aeb8-558e371a9fee)
+![](https://github.com/thanple/HotSecondsIDEA/blob/master/install/use.png)
 <br>The rules for uploading directories correspond to the Path mappings configured in the second step.<br><br>
 
 ### Plugin Shortcuts
