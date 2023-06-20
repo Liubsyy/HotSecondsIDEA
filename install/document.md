@@ -1,6 +1,9 @@
 ### Introduction
 The HotSeconds plugin is mainly used for hot deploying code to remote servers, with a response time in seconds. It provides one-click operation throughout the entire process, saving a significant amount of time for the modify->package->deploy cycle. This plugin is divided into HotSecondsClient and HotSecondsServer.<br>
-At present, only JDK 1.8 is supported. Support for higher versions will be considered in the future based on demand.
+At present, only JDK 1.8 is supported. Support for higher versions will be considered in the future based on demand.<br>
+
+Hot-deployment file range: support hot-deployment of all right-clicked files to the server, including java, .class files in jar, xml, html and other files, but path mapping needs to be configured for other files except java.<br>
+Java hot loading range: modify code, add functions, add classes, etc.
 
 ### HotSecondsServer Installation
 1.Upload HotSeconds1.0.zip to the server , and run 'sh install.sh'<br>
