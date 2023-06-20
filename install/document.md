@@ -26,7 +26,8 @@ The 'secret' should match that of the remote server. By filling in the local and
 
 ### Plugin Keymap
 In Keymap->Plugins->HotSecondsClient, you can customize shortcuts<br>
-For instance, you can set shortcuts for HotSeconds Start/Stop and Hot swap this file.
+![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/keymap.png)
+<br>For instance, you can set shortcuts for HotSeconds Start/Stop and Hot swap this file.
 
 
 ## About extensions
