@@ -12,8 +12,8 @@ It supports code modification, add fields, add methods, and add classes. It also
 2.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br>
 3.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
 Here, $path1 is the directory uploaded in the step 1, and $path2 is the directory uploaded in the step 2.<br>
-If it is a java or .class file, you don’t need to add configuration, other files need to be filled<br>
-[HotSecondsServer.zip downloads](https://github.com/thanple/HotSecondsIDEA/releases/tag/HotSecondsServer)
+If it is a java or .class file, you don’t need to add configuration, other files need to be filled<br><br>
+[HotSecondsServer.zip Download Here](https://github.com/thanple/HotSecondsIDEA/releases/tag/HotSecondsServer)
 
 ## HotSecondsClient Installation
 1.Download and install HotSecondsClient from the plugin marketplace<br>
