@@ -5,7 +5,7 @@ At present, only JDK 1.8 is supported. Support for higher versions will be consi
 #### Hot-deployment file range
 support hot-deployment of all right-clicked files to the server, including java, .class files in jar, xml, html and other files, but path mapping needs to be configured for other files except java.<br>
 #### Java hot loading range
-It supports code modification, add functions, and add classes. It also supports framework context updates such as Spring and MyBatis.
+It supports code modification, add fields, add methods, and add classes. It also supports framework context updates such as Spring,SpringMVC and MyBatis.
 
 ## HotSecondsServer Installation
 1.Upload HotSecondsServer.zip to the server , and run 'sh install.sh'<br>
