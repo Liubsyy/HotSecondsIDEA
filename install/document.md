@@ -1,6 +1,6 @@
 ## Introduction
 The HotSeconds plugin is mainly used for hot deployment to remote servers after writing the codes, with a response time in seconds. It provides one-key operation in all time, help you saving a significant amount of time for the modify->package->deploy cycle. This plugin is divided into HotSecondsClient and HotSecondsServer.<br>
-At present, only JDK 1.8 is supported. Support for higher versions will be considered in the future based on demand.<br>
+At present, only JDK8 is supported.  In the future will consider supporting java11, java17 and other higher versions according to the demand.
 
 #### Hot-deployment file range
 support hot-deployment of all right-clicked files to the server, including java, .class files in jar, xml, html and other files, but path mapping needs to be configured for other files except java.<br>
