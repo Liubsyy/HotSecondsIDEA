@@ -15,7 +15,7 @@ Here, $path1 is the directory uploaded in the step 1, and $path2 is the director
 If it is a java or .class file, you don’t need to add configuration, other files need to be filled<br>
 
 ## HotSecondsClient Installation
-1.Download and install HotSecondsClient from the plugin market<br>
+1.Download and install HotSecondsClient from the plugin marketplace<br>
 2.Go to the menu Run->HotSeconds Settings->Settings to add the server to connect to and configure<br>
 The 'secret' should match that of the remote server. By filling in the local and remote mapping paths, files in the local directory, including files in subfolders, can be uploaded to the remote server.<br>
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/hotseconds-setting.png)
