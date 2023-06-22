@@ -14,7 +14,7 @@ You can also manually go to [libjvm.so](https://github.com/thanple/HotSecondsIDE
 2.Upload the package in step 1 to the server, and run sh install.sh on the server <br><br>
 3.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br><br>
 4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
-Here, $path1 is the directory uploaded in the step 1, and $path2 is the directory uploaded in the step 2.<br>
+Here, $path1 is the directory uploaded in the step 2, and $path2 is the directory uploaded in the step 3.<br>
 If it is a java or .class file, you don’t need to add configuration, other files need to be filled<br><br>
 [HotSecondsServer.zip Download Here](https://github.com/thanple/HotSecondsIDEA/releases/tag/HotSecondsServer)
 
