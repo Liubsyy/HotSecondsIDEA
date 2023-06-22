@@ -37,6 +37,11 @@ In Keymap->Plugins->HotSecondsClient, you can customize shortcuts<br>
 <br>For instance, you can set shortcuts for HotSeconds Start/Stop and Hot swap this file.
 <br><br>
 
+## About local hot deployment
+Of course it is possible, just change the remote ip to 127.0.0.1, but it is a bit like a cannon hitting mosquitoes, so it is not recommended.
+Of course, if you need to do this, you can omit the first and second steps in "HotSecondsServer Installation", go to [dcevm](https://github.com/dcevm/dcevm/releases) to find the jar package of your JDK version, download it and execute sudo java -jar DCEVM-light-8u *install.jar is installed, and then perform steps 3 and 4.
+<br><br>
+
 ## About extensions
 This plug-in is not a panacea. After all, each company has its own framework, and there are so many open source frameworks on the market, but this plug-in is compatible with everything, and can expand the pre-logic and post-logic of uploading files. <br>
 Copy IHotExtHandler.java in HotSecondsServer.zip to your project, implement this interface, and then configure your class name in hot-seconds-remote.xml, so that some logic that needs to refresh the cache and context can be done trigger.
