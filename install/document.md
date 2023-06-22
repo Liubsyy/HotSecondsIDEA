@@ -47,5 +47,5 @@ If you need to do this, you can omit the step 1 and step 2 in "HotSecondsServer 
 <br><br>
 
 ## About extensions
-This plug-in is not a panacea. After all, each company has its own framework, and there are so many open source frameworks on the market, but this plug-in is compatible with everything, and can expand the pre-logic and post-logic of uploading files. <br>
+Every company has its own framework, and there are many new frameworks on the market. This plugin is compatible with everything, and can expand the pre-logic and post-logic of uploading files. <br>
 Copy IHotExtHandler.java in HotSecondsServer.zip to your project, implement this interface, and then configure your class name in hot-seconds-remote.xml, so that some logic that needs to refresh the cache and context can be done trigger.
