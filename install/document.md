@@ -8,9 +8,10 @@ support hot-deployment of all right-clicked files to the server, including java,
 It supports code modification, add fields, add methods, and add classes. It also supports framework context updates such as Spring,SpringMVC and MyBatis.
 
 ## HotSecondsServer Installation
-1.Upload HotSecondsServer.zip to the server , and run 'sh install.sh'<br>
-2.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br>
-3.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
+1.Download HotSecondsServer.zip and decompress it locally. First, check the jdk version of the server (remote and local are not necessarily the same), execute sh download.sh #version locally, for example, java version "1.8.0_181" is 181, then execute sh download.sh 181, the required files will be downloaded at this time. <br><br>
+2.Upload the package in step 1 to the server, and run sh install.sh on the server <br><br>
+3.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br><br>
+4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
 Here, $path1 is the directory uploaded in the step 1, and $path2 is the directory uploaded in the step 2.<br>
 If it is a java or .class file, you don’t need to add configuration, other files need to be filled<br><br>
 [HotSecondsServer.zip Download Here](https://github.com/thanple/HotSecondsIDEA/releases/tag/HotSecondsServer)
