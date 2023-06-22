@@ -9,6 +9,8 @@ It supports code modification, add fields, add methods, and add classes. It also
 
 ## HotSecondsServer Installation
 1.Download HotSecondsServer.zip and decompress it locally. First, check the jdk version of the server (remote and local are not necessarily the same), execute sh download.sh #version locally, for example, java version "1.8.0_181" is 181, then execute sh download.sh 181, the required files will be downloaded at this time. <br><br>
+You can also manually go to libjvm.so to find the corresponding version to download, and put it under ./lib in the decompression directory after downloading.
+
 2.Upload the package in step 1 to the server, and run sh install.sh on the server <br><br>
 3.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br><br>
 4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
