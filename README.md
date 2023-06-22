@@ -1,2 +1,4 @@
 # HotSecondsIDEA
- This is a plug-in for remote hot deployment, which can realize hot parts and file uploads.
+ This plugin is mainly used for hot deployment to remote servers after writing the codes.<br>
+ [中文文档](https://github.com/thanple/HotSecondsIDEA/blob/master/install/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md) <br>
+ [English Document](https://github.com/thanple/HotSecondsIDEA/blob/master/install/document.md)
