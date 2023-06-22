@@ -38,7 +38,7 @@ In Keymap->Plugins->HotSecondsClient, you can customize shortcuts<br>
 <br><br>
 
 ## About local hot deployment
-Of course it is possible, just change the remote ip to 127.0.0.1, but it is a bit like a cannon hitting mosquitoes, so it is not recommended.
+Of course it is possible, just change the remote ip to 127.0.0.1, but it is a bit like a cannon hitting mosquitoes, so it is not recommended.<br>
 Of course, if you need to do this, you can omit the first and second steps in "HotSecondsServer Installation", go to [dcevm](https://github.com/dcevm/dcevm/releases) to find the jar package of your JDK version, download it and execute sudo java -jar DCEVM-light-8u *install.jar is installed, and then perform steps 3 and 4.
 <br><br>
 
