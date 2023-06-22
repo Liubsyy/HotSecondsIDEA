@@ -22,7 +22,7 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 <br><br>
 
 ## HotSecondsClient Installation
-1.Download and install HotSecondsClient from the plugin marketplace.<br>
+1.Install HotSecondsClient from the plugin marketplace.<br>
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/pluginmarketplace.png)
 <br><br>
 
