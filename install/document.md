@@ -70,4 +70,9 @@ If you need to do this, you can omit the step 1 and step 2 in "HotSecondsServer 
 
 ## About extensions
 Every company has its own framework, and there are many new frameworks on the market. This plugin is compatible with everything, and can expand the pre-logic and post-logic of uploading files. <br>
-Copy IHotExtHandler.java in HotSecondsServer.zip to your project, implement this interface, and then configure your class name in hot-seconds-remote.xml, so that some logic that needs to refresh the cache and context can be done trigger.
+Copy IHotExtHandler.java in HotSecondsServer.zip to your project, implement this interface, and then configure your class name in hot-seconds-remote.xml, so that some logic that needs to refresh the cache and context can be done trigger.<br>
+
+Times are developing, society is progressing, and this plugin is constantly being updated and improved. At the same time, I also hope that everyone can expand the logic of some open source frameworks, and actively share and contribute at the same time. I will also consider writing commonly used extension logic into the core of the plugin. 
+
+
+
