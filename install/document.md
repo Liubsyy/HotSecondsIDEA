@@ -18,7 +18,7 @@ You can also manually go to [libjvm.so](https://github.com/thanple/HotSecondsIDE
 **Verification is successful: Enter java -XXaltjvm=dcevm -version, if the result comes out, it means that the first 2 steps are successful, and the next step will be smooth.**
 
 
-3.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br>
+3.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' , classloader etc as needed<br>
 
 &lt;secret&gt;
 ```
