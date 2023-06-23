@@ -23,6 +23,9 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 <br><br>
 
 ## HotSecondsClient Installation
+
+**Version requirements: IDEA2020.3 and later**<br><br>
+
 1.Install HotSecondsClient from the plugin marketplace.<br>
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/pluginmarketplace.png)
 <br><br>
