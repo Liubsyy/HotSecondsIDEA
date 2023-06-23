@@ -18,14 +18,14 @@ You can also manually go to [libjvm.so](https://github.com/thanple/HotSecondsIDE
 **Verification is successful: Enter java -XXaltjvm=dcevm -version, if the result comes out, it means that the first 2 steps are successful, and the next step will be smooth.**
 
 
-3.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br><br>
+3.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br>
 
-secret
+&lt;secret&gt;
 ```
 As long as this is unique, it is necessary to ensure that the secrets of the client and the server are consistent
 ```
 
-classloader
+&lt;classloader&gt;
 ```
 Common project: fill in AppClassLoader
 Tomcat project: fill in WebappClassLoader for Tomcat7 and below, fill in ParallelWebappClassLoader for Tomcat8 and above
@@ -33,6 +33,7 @@ SpringBoot project: LaunchedURLClassLoader
 Other container projects: Take your 20 years of effort to see which ClassLoader you used to load it, just fill it in, or leave a message and I will add the document later
 ```
 
+<br>
 4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
 Here, $path1 is the directory uploaded in the step 2, and $path2 is the directory uploaded in the step 3.<br>
 If it is a java or .class file, you don’t need to add configuration, other files need to be filled<br><br>
@@ -73,6 +74,13 @@ Every company has its own framework, and there are many new frameworks on the ma
 Copy IHotExtHandler.java in HotSecondsServer.zip to your project, implement this interface, and then configure your class name in hot-seconds-remote.xml, so that some logic that needs to refresh the cache and context can be done trigger.<br>
 
 Times are developing, society is progressing, and this plugin is constantly being updated and improved. At the same time, I also hope that everyone can expand the logic of some open source frameworks, and actively share and contribute at the same time. I will also consider writing commonly used extension logic into the core of the plugin. 
+
+<br>
+
+## future
++ Constantly update and improve the hot deployment of new frameworks and popular frameworks in the market
++ Support hot deployment of higher versions of JDK, such as Java11, Java17
++ The plug-in adds some practical functions, similar to the function of remote execution function (already implemented), welcome to give suggestions
 
 
 
