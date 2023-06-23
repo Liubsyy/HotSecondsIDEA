@@ -79,7 +79,7 @@ Times are developing, society is progressing, and this plugin is constantly bein
 
 <br>
 
-## future
+## Future
 + Constantly update and improve the hot deployment of new frameworks and popular frameworks in the market
 + Support hot deployment of higher versions of JDK, such as Java11, Java17
 + The plug-in adds some practical functions, similar to the function of remote execution function (already implemented), welcome to give suggestions
