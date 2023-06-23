@@ -19,6 +19,20 @@ You can also manually go to [libjvm.so](https://github.com/thanple/HotSecondsIDE
 
 
 3.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' as needed<br><br>
+
+secret
+```
+As long as this is unique, it is necessary to ensure that the secrets of the client and the server are consistent
+```
+
+classloader
+```
+Common project: fill in AppClassLoader
+Tomcat project: fill in WebappClassLoader for Tomcat7 and below, fill in ParallelWebappClassLoader for Tomcat8 and above
+SpringBoot project: LaunchedURLClassLoader
+Other container projects: Take your 20 years of effort to see which ClassLoader you used to load it, just fill it in, or leave a message and I will add the document later
+```
+
 4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
 Here, $path1 is the directory uploaded in the step 2, and $path2 is the directory uploaded in the step 3.<br>
 If it is a java or .class file, you don’t need to add configuration, other files need to be filled<br><br>
