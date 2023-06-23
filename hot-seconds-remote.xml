@@ -9,10 +9,10 @@
     <!-- 远程端口 -->
     <remote_port>2023</remote_port>
 
-    <init_delay>120000</init_delay>
+    <init_delay>3000</init_delay>
     
     <!-- 普通java项目填 AppClassLoader,Tomcat项目填 WebappClassLoader或者ParallelWebappClassLoader, SpringBoot项目填 LaunchedURLClassLoader -->
-    <classloader>ParallelWebappClassLoader</classloader>
+    <classloader>AppClassLoader</classloader>
     
     <!-- 这里的扩展classname是热加载某个文件的前置和后置操作,需要实现IHotExtHandler接口 -->
     <dev-ext>
