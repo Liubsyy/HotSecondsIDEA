@@ -36,7 +36,7 @@ Other container projects: Take your 20 years of effort to see which ClassLoader 
 <br>
 4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
 Here, $path1 is the directory uploaded in the step 2, and $path2 is the directory uploaded in the step 3.<br>
-If it is a java or .class file, you don’t need to add configuration, other files need to be filled<br><br>
+If it is a java or .class file, you don’t need to add configuration, other files need to be filled.<br><br>
 [HotSecondsServer.zip Download Here](https://github.com/thanple/HotSecondsIDEA/releases/tag/HotSecondsServer)
 
 <br><br>
