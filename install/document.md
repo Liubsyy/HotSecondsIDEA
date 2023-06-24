@@ -168,7 +168,7 @@ After re-opening the switch, you can hot-deploy the .html/.css/.js files in the 
 <br>
 
 ## Future
-+ Constantly update and improve the hot deployment of new frameworks and popular frameworks in the market
++ Constantly update and improve the hot deployment of new frameworks and popular frameworks in the market, make the extension pack a new project
 + Support hot deployment of higher versions of JDK, such as Java11, Java17
 + The plug-in adds some practical functions, similar to the function of remote execution function (already implemented), welcome to give suggestions
 
