@@ -38,7 +38,7 @@ As long as this is unique, it is necessary to ensure that the secrets of the cli
 Here, $path1 is the directory uploaded in the step 2, and $path2 is the directory uploaded in the step 3.<br><br>
 
 ***Friendly reminder: Only add this parameter in the test/sandbox, do not add this parameter online, if you do not add this parameter, the hot deployment agent will not be enabled.***
-<br>
+<br><br>
 When all finished , restart your server.
 
 <br><br>
