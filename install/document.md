@@ -52,6 +52,11 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 2.Go to the menu Run->HotSeconds Settings->Settings to add the server to connect to and configure.<br>
 The 'secret' should match that of the remote server. By filling in the local and remote mapping paths, files in the local directory, including files in subfolders, can be uploaded to the remote server.<br>
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/hotseconds-setting.png)
+
+<br>
+
+**After filling in, hot-seconds.xml will be generated locally, this is the local configuration file.**
+
 <br><br>
 
 3.Run->HotSeconds Start/Stop to activate the HotSeconds plugin. Right-click to hot deploy the selected files to the remote server.<br>
