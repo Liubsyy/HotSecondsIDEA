@@ -9,7 +9,7 @@ It supports code modification, add fields, add methods, and add classes. It also
 <br><br>
 
 ## HotSecondsServer Installation
-1.Download HotSecondsServer.zip and decompress it locally. First, check the jdk version of the server (remote and local are not necessarily the same), execute sh download.sh versionnum locally.<br>
+1.Download HotSecondsServer.zip and decompress it locally([HotSecondsServer.zip Download Here](https://github.com/thanple/HotSecondsIDEA/releases/tag/HotSecondsServer)). First, check the jdk version of the server (remote and local are not necessarily the same), execute sh download.sh versionnum locally.<br>
 Example: The server enters java -version and displays "1.8.0_181", then versionnum=181, and then executes sh download.sh 181, and the required files will be downloaded at this time. <br><br>
 You can also manually go to [libjvm.so](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_dcevm.md) to find the corresponding version to download, and put it under ./lib in the decompression directory after downloading.
 
@@ -36,10 +36,8 @@ As long as this is unique, it is necessary to ensure that the secrets of the cli
 <br>
 4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
 Here, $path1 is the directory uploaded in the step 2, and $path2 is the directory uploaded in the step 3.<br>
-If it is a java or .class file, you don’t need to add configuration, other files need to be filled.<br><br>
+If it is a java or .class file, you don’t need to add configuration, other files need to be filled.
 
-
-[HotSecondsServer.zip Download Here](https://github.com/thanple/HotSecondsIDEA/releases/tag/HotSecondsServer)
 
 <br><br>
 
