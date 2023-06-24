@@ -45,11 +45,11 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 
 **Version requirements: IDEA2020.3 and later**<br><br>
 
-1.Install HotSecondsClient from the plugin marketplace.<br>
+1.Install HotSecondsClient from the plugin marketplace.<br><br>
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/pluginmarketplace.png)
 <br><br>
 
-2.Go to the menu Run->HotSeconds Settings->Settings to add the server to connect to and configure.<br>
+2.Go to the menu Run->HotSeconds Settings->Settings to add the server to connect to and configure.<br><br>
 The 'secret' should match that of the remote server. By filling in the local and remote mapping paths, files in the local directory, including files in subfolders, can be uploaded to the remote server.<br>
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/hotseconds-setting.png)
 
@@ -59,9 +59,24 @@ The 'secret' should match that of the remote server. By filling in the local and
 
 <br><br>
 
-3.Run->HotSeconds Start/Stop to activate the HotSeconds plugin. Right-click to hot deploy the selected files to the remote server.<br>
+3.Run->HotSeconds Start/Stop to activate the HotSeconds plugin. Right-click to hot deploy the selected files to the remote server.
+<br><br>
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/use.png)
-<br>The rules for uploading directories correspond to the Path mappings configured in the second step.<br><br>
+<br>The rules for uploading directories correspond to the Path mappings configured in the second step.<br><br><br>
+
+
+### All actions of the plugin
+| Action | Discribtion | Location | Keymap |
+| ------ | ------ | ------ | ------ |
+|HotSeconds switch | After modifying the configuration, you need to turn on the switch again | Avatar button next to Run menu/Debug| HotSeconds Start/Stop |
+|Select file for hot deployment | Path mapping needs to be configured for hot deployment to the remote path, if it is a java file, no need to configure | Right click on the file/project menu to select the file | Hot swap this file |
+|Remote compilation and hot deployment of files | Upload source code to remote compilation and hot deployment, the remote needs to install jdk (not jre), which solves the problem of inconsistency between local and remote versions | Right click on java files | Remote compilation and Hot swap |
+|Hot deployment of the entire jar | Upload to the remote and batch hot deployment of all .classes in the jar |Open any .class in the jar package and right click | Hot deploy the JAR to remote |
+|Remote Execution Method | Static no-argument method is required to execute, you can use this method to call other parameters and non-static methods |Right click on the static no-argument method |Run method on remote server |
+
+
+
+<br>
 
 ### Plugin Keymap
 In Keymap->Plugins->HotSecondsClient, you can customize shortcuts<br>
