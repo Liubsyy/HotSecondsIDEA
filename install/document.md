@@ -97,6 +97,76 @@ Times are developing, society is progressing, and this plugin is constantly bein
 
 <br>
 
+**Here is an extended example: the html of the hot-deployed velocity template should be used as an example**
+
+First create a java file com.liubs.ext.VelocityHtmlCacheClear to implement the IHotExtHandler interface
+
+```
+public class VelocityHtmlCacheClear implements IHotExtHandler {
+    @Override
+    public void preHandle(ClassLoader classLoader, String path, byte[] content) {
+    }
+
+    @Override
+    public void afterHandle(ClassLoader classLoader, Class<?> classz, String path, byte[] content) {
+        if(!path.endsWith(".html")) {
+            return;
+        }
+
+        try{
+            String fileName = path.substring(path.lastIndexOf("/")+1);
+
+            Class<?> runtimeSingleton = Class.forName("org.apache.velocity.runtime.RuntimeSingleton");
+            Field riField = runtimeSingleton.getDeclaredField("ri");
+            riField.setAccessible(true);
+            Object ri =  riField.get(null);
+            riField.setAccessible(false);
+            Field resourceManagerField = ri.getClass().getDeclaredField("resourceManager");
+            resourceManagerField.setAccessible(true);
+            Object resourceManager = resourceManagerField.get(ri);
+            resourceManagerField.setAccessible(false);
+            Field globalCacheField = resourceManager.getClass().getDeclaredField("globalCache");
+            globalCacheField.setAccessible(true);
+            Object resourceCache = globalCacheField.get(resourceManager);
+            globalCacheField.setAccessible(false);
+
+            Method enumerateKeys = resourceCache.getClass().getDeclaredMethod("enumerateKeys");
+            enumerateKeys.setAccessible(true);
+            Iterator cacheIterator = (Iterator)enumerateKeys.invoke(resourceCache);
+            enumerateKeys.setAccessible(false);
+
+            while(cacheIterator.hasNext()) {
+                Object cacheKey = cacheIterator.next();
+
+                //clear cache
+                if(cacheKey.toString().contains(fileName)) {   
+                    cacheIterator.remove();
+                }
+            }
+        }catch (Throwable e) {
+           e.printStackTrace();
+        }
+    }
+}
+```
+
+
+Then add classname to dev-ext in hot-seconds-remote.xml
+```
+    <dev-ext>
+        <classname>com.liubs.ext.VelocityHtmlCacheClear</classname>
+    </dev-ext>
+```
+
+Then redeploy the server (you can also not restart, use this plug-in to hot-deploy VelocityHtmlCacheClear twice, remember twice) <br>
+Then modify the mapping path
+![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/mapping-set.png)
+
+After re-opening the switch, you can hot-deploy the .html/.css/.js files in the local /src/main/webapp directory to the /opt/web/xx/webapps directory. After uploading, the logic of VelocityHtmlCacheClear will be executed, then Just refresh the cache.
+
+
+<br>
+
 ## Future
 + Constantly update and improve the hot deployment of new frameworks and popular frameworks in the market
 + Support hot deployment of higher versions of JDK, such as Java11, Java17
