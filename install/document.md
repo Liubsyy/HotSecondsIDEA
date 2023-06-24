@@ -26,12 +26,12 @@ As long as this is unique, it is necessary to ensure that the secrets of the cli
 ```
 
 &lt;classloader&gt;
-```
-Common project: fill in AppClassLoader
-Tomcat project: fill in WebappClassLoader for Tomcat7 and below, fill in ParallelWebappClassLoader for Tomcat8 and above
-SpringBoot project: LaunchedURLClassLoader
-Other container projects: Take your 20 years of effort to see which ClassLoader you used to load it, just fill it in, or leave a message and I will add the document later
-```
+| Project type | classloader |
+| ------ | ------ |
+|Common project| AppClassLoader|
+|Tomcat project| fill in WebappClassLoader for Tomcat7 and below, fill in ParallelWebappClassLoader for Tomcat8 and above|
+|SpringBoot project| LaunchedURLClassLoader|
+|Other container projects| Take your 20 years of effort to see which ClassLoader you used to load it, just fill it in, or leave a message and I will add the document later|
 
 <br>
 4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
