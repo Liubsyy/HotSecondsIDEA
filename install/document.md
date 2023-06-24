@@ -35,9 +35,11 @@ As long as this is unique, it is necessary to ensure that the secrets of the cli
 
 <br>
 4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
-Here, $path1 is the directory uploaded in the step 2, and $path2 is the directory uploaded in the step 3.<br>
-If it is a java or .class file, you don’t need to add configuration, other files need to be filled.
+Here, $path1 is the directory uploaded in the step 2, and $path2 is the directory uploaded in the step 3.<br><br>
 
+***Friendly reminder: Only add this parameter in the test/sandbox, do not add this parameter online, if you do not add this parameter, the hot deployment agent will not be enabled.***
+<br>
+When all finished , restart your server.
 
 <br><br>
 
@@ -53,6 +55,8 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 The 'secret' should match that of the remote server. By filling in the local and remote mapping paths, files in the local directory, including files in subfolders, can be uploaded to the remote server.<br>
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/hotseconds-setting.png)
 
+<br>
+If it is a java or .class file, you don’t need to add configuration, other files need to be filled.
 <br>
 
 **After filling in, hot-seconds.xml will be generated locally, this is the local configuration file.**
