@@ -9,7 +9,7 @@ It supports code modification, add fields, add methods, and add classes. It also
 <br><br>
 
 ## HotSecondsServer Installation
-1.Download HotSecondsServer.zip and decompress it locally([HotSecondsServer.zip Download Here](https://github.com/thanple/HotSecondsIDEA/releases/tag/HotSecondsServer)). First, check the jdk version of the server (remote and local are not necessarily the same), execute sh download.sh versionnum locally.<br>
+1.Download HotSecondsServer.zip and decompress it locally([HotSecondsServer.zip Download Here](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)). First, check the jdk version of the server (remote and local are not necessarily the same), execute sh download.sh versionnum locally.<br>
 Example: The server enters java -version and displays "1.8.0_181", then versionnum=181, and then executes sh download.sh 181, and the required files will be downloaded at this time. <br><br>
 You can also manually go to [libjvm.so](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_dcevm.md) to find the corresponding version to download, and put it under ./lib in the decompression directory after downloading.
 
