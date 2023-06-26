@@ -63,10 +63,11 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 
 <br><br>
 
-3.Run->HotSeconds Start/Stop to activate the HotSeconds plugin. Right-click to hot deploy the selected files to the remote server.
-<br><br>
+3. Click the avatar next to Debug to open the HotSeconds plug-in. In the latest version of the UI, you can click Run->HotSeconds Start/Stop to open the HotSeconds plug-in, and right-click to hot-deploy the selected file to the remote server.<br><br>
 ![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/use.png)
-<br>The rules for uploading directories correspond to the Path mappings configured in the second step.<br><br><br>
+<br>The rule for uploading the directory is the Path mappings configured in step 2. If it is a java/class file, you don’t need to fill it in. Other files need to be filled in. <br>
+
+**When hot-deploying java files, it will be compiled first and then hot-deployed to the remote. If the compilation fails, first build the project as a whole and then hot-deploy (this is the basic operation)**
 
 
 ### All actions of the plugin
