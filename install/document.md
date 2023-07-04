@@ -78,6 +78,7 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 |Remote compilation and hot deployment of files | Upload source code to remote compilation and hot deployment, the remote needs to install jdk (not jre), which solves the problem of inconsistency between local and remote versions | Right click on java files | Remote compilation and Hot swap |
 |Hot deployment of the entire jar | Upload to the remote and batch hot deployment of all .classes in the jar |Open any .class in the jar package and right click | Hot deploy the JAR to remote |
 |Remote Execution Method | Static no-argument method is required to execute, you can use this method to call other parameters and non-static methods |Right click on the static no-argument method |Run method on remote server |
+|Automatic hot deployment | After completing the path mapping, the plug-in will monitor the local directory file changes and automatically upload to the remote (except for .class files, if it is .class, use the Hot swap this file function) |Run->HotSeconds Settings->Settings |
 
 
 
