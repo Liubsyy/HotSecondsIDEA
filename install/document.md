@@ -6,6 +6,11 @@ At present, only JDK8 is supported.  In the future will consider supporting java
 support hot-deployment of all right-clicked files to the server, including java, .class files in jar, xml, html and other files, but path mapping needs to be configured for other files except java.
 #### Java hot reloading range
 It supports code modification, add fields, add methods, and add classes. It also supports framework context updates such as Spring, SpringMVC , MyBatis, SpringBoot etc.
+#### Issue Feedback and Communication
+If you have any questions, you can just create Issues, which is convenient for others to see and will not be swiped.
+
+
+
 <br><br>
 
 ## HotSecondsServer Installation
