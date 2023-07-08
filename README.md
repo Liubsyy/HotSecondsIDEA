@@ -6,3 +6,10 @@
  <br>
  
  [English Document](https://github.com/thanple/HotSecondsIDEA/blob/master/install/document.md)
+
+ # HotSeconds Extension
+
+This is a HotSeconds extension project to support more frameworks and more features.
+ <br>
+ 
+ [HotSecondsExtension](https://github.com/Liubsyy/HotSecondsExtension)
