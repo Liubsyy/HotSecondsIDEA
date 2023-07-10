@@ -1,4 +1,4 @@
-## HotSecondsIDEA
+# HotSecondsIDEA
  This plugin is mainly used for hot deployment to remote servers after writing the codes.
  <br>
  
@@ -10,10 +10,8 @@
 
  HotSecondsServer Download: [HotSecondsServer.zip](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
 
-<br>
 
- 
- ## HotSeconds Extension
+ # HotSeconds Extension
 
 This is a HotSeconds extension project to support more frameworks and more features.
  
