@@ -6,13 +6,12 @@
  <br>
  
  [English Document](https://github.com/thanple/HotSecondsIDEA/blob/master/install/document.md)
-
-<br> 
-
- ## HotSecondsServer Download
- [https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
-
  <br>
+
+ HotSecondsServer Download: [HotSecondsServer.zip](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
+
+<br>
+
  
  ## HotSeconds Extension
 
