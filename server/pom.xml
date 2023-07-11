@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.hotswapagent</groupId>
+    <artifactId>hotswap-agent-aggregator</artifactId>
+    <version>1.4.1</version>
+    <packaging>pom</packaging>
+
+    <name>Hotswap Agent Aggregator</name>
+    <description>Agregator for Hotswap Agent projects</description>
+    <url>https://github.com/HotswapProjects/HotswapAgent</url>
+
+    <modules>
+        <module>hotswap-agent-parent</module>
+        <module>hotswap-agent-core</module>
+        <module>plugin/hotswap-agent-hibernate-plugin</module>
+        <module>plugin/hotswap-agent-hibernate3-plugin</module>
+        <module>plugin/hotswap-agent-spring-plugin</module>
+        <module>plugin/hotswap-agent-jersey1-plugin</module>
+        <module>plugin/hotswap-agent-jersey2-plugin</module>
+        <module>plugin/hotswap-agent-jetty-plugin</module>
+        <module>plugin/hotswap-agent-tomcat-plugin</module>
+        <module>plugin/hotswap-agent-zk-plugin</module>
+        <module>plugin/hotswap-agent-logback-plugin</module>
+        <module>plugin/hotswap-agent-log4j2-plugin</module>
+        <module>plugin/hotswap-agent-cdi-plugin</module>
+        <module>plugin/hotswap-agent-myfaces-plugin</module>
+        <module>plugin/hotswap-agent-mojarra-plugin</module>
+        <module>plugin/hotswap-agent-omnifaces-plugin</module>
+        <module>plugin/hotswap-agent-el-resolver-plugin</module>
+        <module>plugin/hotswap-agent-osgiequinox-plugin</module>
+        <module>plugin/hotswap-agent-owb-plugin</module>
+        <module>plugin/hotswap-agent-proxy-plugin</module>
+        <module>plugin/hotswap-agent-webobjects-plugin</module>
+        <module>plugin/hotswap-agent-weld-plugin</module>
+        <module>plugin/hotswap-agent-jbossmodules-plugin</module>
+        <module>plugin/hotswap-agent-resteasy-registry-plugin</module>
+        <module>plugin/hotswap-agent-deltaspike-plugin</module>
+        <module>plugin/hotswap-agent-wildfly-el-plugin</module>
+        <module>plugin/hotswap-agent-glassfish-plugin</module>
+        <module>plugin/hotswap-agent-vaadin-plugin</module>
+        <module>plugin/hotswap-agent-wicket-plugin</module>
+        <module>plugin/hotswap-agent-cxf-plugin</module>
+        <module>plugin/hotswap-agent-freemarker-plugin</module>
+        <module>plugin/hotswap-agent-undertow-plugin</module>
+        <module>plugin/hotswap-agent-mybatis-plugin</module>
+        <module>plugin/hotswap-agent-plugins</module>
+        <module>hotswap-agent</module>
+    </modules>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License (GPL)</name>
+            <url>http://www.gnu.org/licenses/gpl.txt</url>
+        </license>
+    </licenses>
+
+    <issueManagement>
+        <system>git</system>
+        <url>https://github.com/HotswapProjects/HotswapAgent/issues</url>
+    </issueManagement>
+
+    <scm>
+        <connection>scm:git:http://github.com/HotswapProjects/HotswapAgent.git</connection>
+        <developerConnection>scm:git:git@github.com/HotswapProjects/HotswapAgent.git</developerConnection>
+        <url>https://github.com/HotswapProjects/HotswapAgent</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <id>bubnik</id>
+            <name>Jiri Bubnik</name>
+            <roles>
+                <role>Admin</role>
+            </roles>
+            <organizationUrl>http://jiribubnik.cz</organizationUrl>
+        </developer>
+    </developers>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <localCheckout>true</localCheckout>
+                    <pushChanges>false</pushChanges>
+                    <releaseProfiles>release</releaseProfiles>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <version>2.1</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
