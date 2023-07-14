@@ -11,9 +11,10 @@
  # Download
  
  [HotSecondsServer](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
- 
+  <br>
+  
  [HotSecondsClient](https://plugins.jetbrains.com/plugin/21635-hotsecondsclient)
-
+ <br>
 
  # HotSeconds Extension
 
