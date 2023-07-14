@@ -10,7 +10,7 @@
 
  # Download
  
- [HotSecondsServer.zip](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
+ [HotSecondsServer](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
  
  [HotSecondsClient](https://plugins.jetbrains.com/plugin/21635-hotsecondsclient)
 
