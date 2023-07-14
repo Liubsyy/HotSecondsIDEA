@@ -8,7 +8,11 @@
  [English Document](https://github.com/thanple/HotSecondsIDEA/blob/master/install/document.md)
  <br>
 
- HotSecondsServer Download: [HotSecondsServer.zip](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
+ # Download
+ 
+ [HotSecondsServer.zip](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
+ 
+ [HotSecondsClient](https://plugins.jetbrains.com/plugin/21635-hotsecondsclient)
 
 
  # HotSeconds Extension
