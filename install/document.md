@@ -74,6 +74,18 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 
 **When hot-deploying java files, it will be compiled first and then hot-deployed to the remote. If the compilation fails, first build the project as a whole and then hot-deploy (this is the basic operation)**
 
+<br><br>
+
+## Quick Start
+>1. After installation, click the button next to Debug to start connecting to the remote server. In the latest UI of the 2023 version, you can select the Run menu -> HotSeconds Start/Stop (the latest version of the UI recommends setting shortcut keys).
+>
+>2. Open the java file, right-click and select Hot swap this file to remote to hot-deploy the current file, and you can also right-click to select hot-deployment for the files in the project on the left.
+>
+>3. Right click on the java file, you can also select Remote compilation and Hot swap, that is, remote compilation and hot deployment.
+>
+>Others: In Run->HotSeconds Settings, you can choose the language, add functions such as IP and other shortcut operations
+
+<br>
 
 ### All actions of the plugin
 | Action | Discribtion | Location | Keymap |
