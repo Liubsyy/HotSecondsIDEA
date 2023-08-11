@@ -73,8 +73,6 @@ The 'secret' should match that of the remote server. By filling in the local and
 If it is a java or .class file, you don’t need to add configuration, other files need to be filled.
 <br>
 
-**After filling in, hot-seconds.xml will be generated locally, this is the local configuration file.**
-
 <br><br>
 
 3.Click the avatar next to Debug to open the HotSeconds plug-in. In the latest version of the UI, you can click Run->HotSeconds Start/Stop to open the HotSeconds plug-in, and right-click to hot-deploy the selected file to the remote server.<br><br>
