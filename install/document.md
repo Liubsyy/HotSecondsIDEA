@@ -25,7 +25,7 @@ For MacOS and Windows, please refer to the following **About local hot deploymen
 
 1.Download HotSecondsServer.zip and decompress it locally. First, check the jdk version of the server (remote and local are not necessarily the same), execute sh download.sh versionnum locally.<br>
 Example: The server enters java -version and displays "1.8.0_181", then versionnum=181, and then executes sh download.sh 181, and the required files will be downloaded at this time. <br><br>
-You can also manually go to [libjvm.so](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_dcevm.md) to find the corresponding version to download, and put it under ./lib in the decompression directory after downloading.
+You can also manually go to [libjvm.so](https://github.com/thanple/HotSecondsIDEA/blob/master/install/libjvm_so.md) to find the corresponding version to download, and put it under ./lib in the decompression directory after downloading.
 
 2.Upload the package in step 1 to the server, and run sh install.sh on the server <br>
 
