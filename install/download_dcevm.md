@@ -17,4 +17,4 @@
 | JDK version | Download url |
 | ------ | ------ |
 | java version "1.8.0_45" | [https://github.com/thanple/HotSecondsIDEA/releases/download/libjvm_so_8u45/libjvm.so](https://github.com/thanple/HotSecondsIDEA/releases/download/libjvm_so_8u45/libjvm.so) |
-| java version "1.8.0_51" | [https://github.com/thanple/HotSecondsIDEA/releases/download/libjvm_so_8u45/libjvm.so](https://github.com/thanple/HotSecondsIDEA/releases/download/libjvm_so_8u45/libjvm.so) |
+| java version "1.8.0_51" | [https://github.com/thanple/HotSecondsIDEA/releases/download/libjvm_so_8u51/libjvm.so](https://github.com/thanple/HotSecondsIDEA/releases/download/libjvm_so_8u51/libjvm.so) |
