@@ -5,6 +5,7 @@
 ## Java8
 | version | since | last updated|  what's new| download url |
 | ------ | ------ | ------ | ------| ------|
+|HotSecondsServer-future2| 2023-09-06 |  ----------- | Unified remote RPC port| [HotSecondsServer-future2.zip](https://github.com/thanple/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer-future2.zip)
 |HotSecondsServer-future| 2023-08-31 |  ----------- | Batch hot reloading files| [HotSecondsServer-future.zip](https://github.com/thanple/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer-future.zip)
 |HotSecondsServer-beat5| 2023-08-21 |  ----------- | Package all static libraries of boot.dll | [HotSecondsServer-beat5.zip](https://github.com/thanple/HotSecondsIDEA/releases/download/HotSecondsSever_beat/HotSecondsServer-beat5.zip)
 |HotSecondsServer-beat4| 2023-08-08 |  ----------- | Package boot.dll dependent libraries | [HotSecondsServer-beat4.zip](https://github.com/thanple/HotSecondsIDEA/releases/download/HotSecondsSever_beat/HotSecondsServer-beat4.zip)
