@@ -5,6 +5,9 @@
  [中文文档](https://github.com/thanple/HotSecondsIDEA/blob/master/install/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md)
  <br>
  
+ [wiki](https://github.com/thanple/HotSecondsIDEA/wiki)
+ <br>
+ 
  [English Document](https://github.com/thanple/HotSecondsIDEA/blob/master/install/document.md)
  <br>
 
