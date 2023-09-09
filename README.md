@@ -1,5 +1,5 @@
 # HotSecondsIDEA
- This plugin is mainly used for hot deployment to remote server after coding.
+ This plugin is mainly used for hot deployment to remote server after coding. It can support hot reloading of java, xml, html, css, js and other files, and also supports hot reloading of frameworks such as spring and mybatis.
  <br>
  
  [中文文档](https://github.com/thanple/HotSecondsIDEA/blob/master/install/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md)
