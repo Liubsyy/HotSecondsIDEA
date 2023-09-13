@@ -14,7 +14,7 @@ If you have any questions, you can just create Issues, which is convenient for o
 <br><br>
 
 ## HotSecondsServer Download
-[HotSecondsServer.zip Download Here](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
+[HotSecondsServer.zip Download Here](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/download_server.md)
 
 <br><br>
 
@@ -25,7 +25,7 @@ For MacOS and Windows, please refer to the following **About local hot deploymen
 
 1.Download HotSecondsServer.zip and decompress it locally. First, check the jdk version of the server (remote and local are not necessarily the same), execute sh download.sh versionnum locally.<br>
 Example: The server enters java -version and displays "1.8.0_181", then versionnum=181, and then executes sh download.sh 181, and the required files will be downloaded at this time. <br><br>
-You can also manually go to [libjvm.so](https://github.com/thanple/HotSecondsIDEA/blob/master/install/libjvm_so.md) to find the corresponding version to download, and put it under ./lib in the decompression directory after downloading.
+You can also manually go to [libjvm.so](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/libjvm_so.md) to find the corresponding version to download, and put it under ./lib in the decompression directory after downloading.
 
 2.Upload the package in step 1 to the server, and run sh install.sh on the server <br>
 
@@ -62,12 +62,12 @@ When all finished , restart your server.
 **Version requirements: IDEA2020.3 and later**<br><br>
 
 1.Install HotSecondsClient from the plugin marketplace.<br><br>
-![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/pluginmarketplace.png)
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/pluginmarketplace.png)
 <br><br>
 
 2.Go to the menu Run->HotSeconds Settings->Settings to add the server to connect to and configure.<br><br>
 The 'secret' should match that of the remote server. By filling in the local and remote mapping paths, files in the local directory, including files in subfolders, can be uploaded to the remote server.<br>
-![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/hotseconds-setting.png)
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/hotseconds-setting.png)
 
 <br>
 If it is a java or .class file, you don’t need to add configuration, other files need to be filled.
@@ -76,7 +76,7 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 <br><br>
 
 3.Click the avatar next to Debug to open the HotSeconds plug-in. In the latest version of the UI, you can click Run->HotSeconds Start/Stop to open the HotSeconds plug-in, and right-click to hot-deploy the selected file to the remote server.<br><br>
-![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/use.png)
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/use.png)
 <br>The rule for uploading the directory is the Path mappings configured in step 2. If it is a java/class file, you don’t need to fill it in. Other files need to be filled in. <br>
 
 **When hot-deploying java files, it will be compiled first and then hot-deployed to the remote. If the compilation fails, first build the project as a whole and then hot-deploy (this is the basic operation)**
@@ -110,13 +110,13 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 
 ### Plugin Keymap
 In Keymap->Plugins->HotSecondsClient, you can customize shortcuts<br>
-![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/keymap.png)
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/keymap.png)
 <br>For instance, you can set shortcuts for HotSeconds Start/Stop and Hot swap this file.
 <br><br>
 
 ## About local hot deployment
 Of course it is possible, just change the remote ip to 127.0.0.1, but it is a bit like a cannon hitting mosquitoes, so it is not recommended.<br>
-If you need to do this, you can omit the step 1 and step 2 in "HotSecondsServer Installation", go to [dcevm](https://github.com/thanple/HotSecondsIDEA/blob/master/install/dcevm_installer.md) to find the jar package of your JDK version(Support MacOS, Linux and Windows), download it and execute sudo java -jar DCEVM-light-8u-install.jar is installed, and then perform steps 3 and 4.
+If you need to do this, you can omit the step 1 and step 2 in "HotSecondsServer Installation", go to [dcevm](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/dcevm_installer.md) to find the jar package of your JDK version(Support MacOS, Linux and Windows), download it and execute sudo java -jar DCEVM-light-8u-install.jar is installed, and then perform steps 3 and 4.
 <br><br>
 
 ## About extensions
@@ -190,7 +190,7 @@ Then add classname to dev-ext in hot-seconds-remote.xml
 
 Then redeploy the server (you can also not restart, use this plug-in to hot-deploy VelocityHtmlCacheClear twice, remember twice) <br>
 Then modify the mapping path
-![](https://github.com/thanple/HotSecondsIDEA/blob/master/img/mapping-set.png)
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/mapping-set.png)
 
 After re-opening the switch, you can hot-deploy the .html/.css/.js files in the local /src/main/webapp directory to the /opt/web/xx/webapps directory. After uploading, the logic of VelocityHtmlCacheClear will be executed, then Just refresh the cache.
 
