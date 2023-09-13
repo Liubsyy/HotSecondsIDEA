@@ -2,19 +2,19 @@
  This plugin is mainly used for hot deployment to remote server after coding. It can support hot reloading of java, xml, html, css, js and other files, and also supports hot reloading of frameworks such as spring and mybatis.
  <br>
 
-  [Wiki](https://github.com/thanple/HotSecondsIDEA/wiki)
+  [Wiki](https://github.com/Liubsyy/HotSecondsIDEA/wiki)
  <br>
  
- [中文文档](https://github.com/thanple/HotSecondsIDEA/blob/master/install/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md)
+ [中文文档](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md)
  <br>
  
  
- [English Document](https://github.com/thanple/HotSecondsIDEA/blob/master/install/document.md)
+ [English Document](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/document.md)
  <br>
 
  # Download
  
- [HotSecondsServer](https://github.com/thanple/HotSecondsIDEA/blob/master/install/download_server.md)
+ [HotSecondsServer](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/download_server.md)
   <br>
   
  [HotSecondsClient](https://plugins.jetbrains.com/plugin/21635-hotsecondsclient)
