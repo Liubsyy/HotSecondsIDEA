@@ -15,6 +15,12 @@
 |HotSecondsServer-beta| 2023-06-22 | 2023-06-28 | Init |[HotSecondsServer-beta.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer/HotSecondsServer-beta.zip) 
 
 
+## Java11 & Java17
+| version | since | last updated|  what's new| download url |
+| ------ | ------ | ------ | ------| ------|
+HotSecondsServer11-future2 | 2023-09-16 |  ----------- | init |[HotSecondsServer11-future2.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer11-future2.zip)
+
+
 
 
 
