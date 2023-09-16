@@ -1,6 +1,6 @@
 ## Introduction
-The HotSeconds plugin is mainly used for hot deployment to remote servers after writing the codes, with a response time in a few seconds. It provides one-key operation in all time, help you saving a significant amount of time for the modify->package->deploy cycle. This plugin is divided into HotSecondsClient and HotSecondsServer.<br>
-At present, only JDK8 is supported.  In the future will consider supporting java11, java17 and other higher versions according to the demand.<br><br>
+HotSeconds is a Java remote hot deployment plug-in, including HotSecondsClient and HotSecondsServer. In theory, it can hot update any file (java, xml, html, css, js, etc.), and also supports hot update of common frameworks (Spring, MyBatis). It can save a lot of time in packaging->deployment->startup. <br>
+Currently supports Java8, Java11 and Java17.
 
 #### Hot-deployment file range
 support hot-deployment of all right-clicked files to the server, including java, .class files in jar, xml, html and other files, but path mapping needs to be configured for other files except java.
@@ -14,48 +14,46 @@ If you have any questions, you can just create Issues, which is convenient for o
 <br><br>
 
 ## HotSecondsServer Download
-[HotSecondsServer.zip Download Here](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/download_server.md)
+[HotSecondsServer.zip Installation Package Download Link](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/download_server.md)
 
-<br><br>
+### 1. Install the server package ###
 
-## HotSecondsServer Installation(Linux)
-For MacOS and Windows, please refer to the following **About local hot deployment**
+### 1. Install server package ###
 
-<br>
+###### Warm reminder: If a certain version is not available, just change it, don’t hang yourself on a tree ######
 
-1.Download HotSecondsServer.zip and decompress it locally. First, check the jdk version of the server (remote and local are not necessarily the same), execute sh download.sh versionnum locally.<br>
-Example: The server enters java -version and displays "1.8.0_181", then versionnum=181, and then executes sh download.sh 181, and the required files will be downloaded at this time. <br><br>
-You can also manually go to [libjvm.so](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/libjvm_so.md) to find the corresponding version to download, and put it under ./lib in the decompression directory after downloading.
+#### Java8 ####
+[Linux] Download HotSecondsServer.zip and decompress it locally, then go to [libjvm.so](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/libjvm_so.md) to find the corresponding jdk version. No need after downloading Rename it and place it directly under ./lib in the decompressed directory, then upload it to the server (note the directory as $path1), and execute sh install.sh<br>
+[Windows & MacOS local hot deployment] First go to [dcevm](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/dcevm_installer.md) to find your JDK version of the jar package (**The versions are consistent Important**), download and run the jar (may require administrator rights or root rights) to install, select Install DCEVM as altjvm, then unzip HotSecondsServer.zip and put it in the root directory of your project (note the directory as $path1) <br>
+> Verify whether it is successful: Enter java -XXaltjvm=dcevm -version. If the result comes out, it means that the first step is successful, and everything will be smooth sailing later.
 
-2.Upload the package in step 1 to the server, and run sh install.sh on the server <br>
+#### Java11 #####
+First download [Trava-JDK11](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases) as your JDK startup. This JDK is modified based on OpenJDK11
+<br>Then download HotSecondsServer11.zip, unzip it and put it on the server (note the directory as $path1)
 
-**Verification is successful: Enter java -XXaltjvm=dcevm -version, if the result comes out, it means that the first 2 steps are successful, and the next step will be smooth.**
+#### Java17 #####
+First download [JBR17](https://github.com/JetBrains/JetBrainsRuntime/releases) as your JDK startup. This JDK is modified based on OpenJDK17
+<br>Then download HotSecondsServer11.zip, unzip it and put it on the server (note the directory as $path1)
+
+###### If you use OracleJDK and ordinary OpenJDK, you can also start it, but hot update does not support new fields and methods, and other functions are normal ######
+
+### 2. Configure hot-seconds-remote.xml ###
+Copy hot-seconds-remote.xml to the resource directory of the code (any directory will do, remember the directory as $path2), and modify configurations such as secret and classloader as needed. <br>
+The secret parameter only needs to be unique. You need to ensure that the secrets of the client and the server are consistent. The configuration of the classloader parameters is as follows:
+- Common project: AppClassLoader
+- Tomcat project: Fill in WebappClassLoader for Tomcat7 and below, fill in ParallelWebappClassLoader for Tomcat8 and above.
+- SpringBoot project: LaunchedURLClassLoader (if it is a local main function to start, fill in AppClassLoader)
+- Other container projects: You can remotely breakpoint getClass().getClassLoader() on the class that needs to be hot updated to see which classloader it is. Just fill it in. You can also leave a message and I will add the document later.
 
 
-3.Copy hot-seconds-remote.xml to the resource directory of the code, and modify configurations like 'secret' , 'classloader' etc as needed<br>
+### 3. Add jvm parameters ###
+Add jvm parameters to enable hot deployment agent
+* Java8 adds jvm parameters: -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml
+* Java11 adds jvm parameters: -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml
+* Java17 adds jvm parameters: --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED -XX:+AllowEnhancedClassRedefinition -javaagent:$path1 /HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml
 
-&lt;secret&gt;
-```
-As long as this is unique, it is necessary to ensure that the secrets of the client and the server are consistent
-```
-
-&lt;classloader&gt;
-| Project type | classloader |
-| ------ | ------ |
-|Common project| AppClassLoader|
-|Tomcat project| fill in WebappClassLoader for Tomcat7 and below, fill in ParallelWebappClassLoader for Tomcat8 and above|
-|SpringBoot project| LaunchedURLClassLoader|
-|Other container projects| Take your 20 years of effort to see which ClassLoader you used to load it, just fill it in, or leave a message and I will add the document later|
-
-<br>
-4.Add the JVM parameter -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml<br>
-Here, $path1 is the directory uploaded in the step 2, and $path2 is the directory uploaded in the step 3.<br><br>
-
-***Friendly reminder: Only add this parameter in the test/sandbox, do not add this parameter online, if you do not add this parameter, the hot deployment agent will not be enabled.***
-<br><br>
-When all finished , restart your server.
-
-<br><br>
+Where $path1 is the directory uploaded in step 1, $path2 is the directory uploaded in step 2
+###### Friendly reminder: Only add this parameter in the test/sandbox, do not add this parameter online, otherwise the hot deployment agent will not be enabled ######
 
 ## HotSecondsClient Installation
 
@@ -114,10 +112,6 @@ In Keymap->Plugins->HotSecondsClient, you can customize shortcuts<br>
 <br>For instance, you can set shortcuts for HotSeconds Start/Stop and Hot swap this file.
 <br><br>
 
-## About local hot deployment
-Of course it is possible, just change the remote ip to 127.0.0.1, but it is a bit like a cannon hitting mosquitoes, so it is not recommended.<br>
-If you need to do this, you can omit the step 1 and step 2 in "HotSecondsServer Installation", go to [dcevm](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/dcevm_installer.md) to find the jar package of your JDK version(Support MacOS, Linux and Windows), download it and execute sudo java -jar DCEVM-light-8u-install.jar is installed, and then perform steps 3 and 4.
-<br><br>
 
 ## About extensions
 Every company has its own framework, and there are many new frameworks on the market. This plugin is compatible with everything, and can expand the pre-logic and post-logic of uploading files. <br>
