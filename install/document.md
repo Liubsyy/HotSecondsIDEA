@@ -20,8 +20,9 @@ If you have any questions, you can just create Issues, which is convenient for o
 ###### Warm reminder: If a certain version is not available, just change it, don’t hang yourself on a tree ######
 
 #### Java8 ####
-[Linux] Download HotSecondsServer.zip and decompress it locally, then go to [libjvm.so](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/libjvm_so.md) to find the corresponding jdk version. No need after downloading Rename it and place it directly under ./lib in the decompressed directory, then upload it to the server (note the directory as $path1), and execute sh install.sh<br>
-[Windows & MacOS local hot deployment] First go to [dcevm](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/dcevm_installer.md) to find your JDK version of the jar package (**The versions are consistent Important**), download and run the jar (may require administrator rights or root rights) to install, select Install DCEVM as altjvm, then unzip HotSecondsServer.zip and put it in the root directory of your project (note the directory as $path1) <br>
+【Linux】 Download HotSecondsServer.zip and decompress it locally, then go to [libjvm.so](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/libjvm_so.md) to find the corresponding jdk version. No need after downloading Rename it and place it directly under ./lib in the decompressed directory, then upload it to the server (note the directory as $path1), and execute sh install.sh<br>
+
+【Windows & MacOS local hot deployment】 First go to [dcevm](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/dcevm_installer.md) to find your JDK version of the jar package (**The versions are consistent Important**), download and run the jar (may require administrator rights or root rights) to install, select Install DCEVM as altjvm, then unzip HotSecondsServer.zip and put it in the root directory of your project (note the directory as $path1) <br>
 > Verify whether it is successful: Enter java -XXaltjvm=dcevm -version. If the result comes out, it means that the first step is successful, and everything will be smooth sailing later.
 
 #### Java11 #####
