@@ -11,15 +11,12 @@ If you have any questions, you can just create Issues, which is convenient for o
 
 
 
-<br><br>
+<br>
 
 ## HotSecondsServer Download
 [HotSecondsServer.zip Installation Package Download Link](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/download_server.md)
 
 ### 1. Install the server package ###
-
-### 1. Install server package ###
-
 ###### Warm reminder: If a certain version is not available, just change it, don’t hang yourself on a tree ######
 
 #### Java8 ####
@@ -101,7 +98,7 @@ If it is a java or .class file, you don’t need to add configuration, other fil
 |Hot deployment of the entire jar | Upload to the remote and batch hot deployment of all .classes in the jar |Open any .class in the jar package and right click | Hot deploy the JAR to remote |
 |Remote Execution Method | Static no-argument method is required to execute, you can use this method to call other parameters and non-static methods |Right click on the static no-argument method |Run method on remote server |
 |Automatic hot deployment | After completing the path mapping, you need to restart HotSecondsClient and the plugin will monitor the local directory file changes and automatically upload to the remote (except for .class files, if it is .class, use the Hot swap this file function) |Run->HotSeconds Settings->Settings |
-
+|Batch hot reloading modified files | Modified files can be hot deployed in batches, including java and resources | HotSecondsClient console->Batch hot deployment modified files | Batch Hot Reloading Modified Files |
 
 
 <br>
@@ -193,7 +190,7 @@ After re-opening the switch, you can hot-deploy the .html/.css/.js files in the 
 
 ## Future
 + Constantly update and improve the hot deployment of new frameworks and popular frameworks in the market, make the extension pack a new project
-+ Support hot deployment of higher versions of JDK, such as Java11, Java17
++ Support hot deployment of higher versions of JDK
 + The plug-in adds some practical functions, similar to the function of remote execution function (already implemented), welcome to give suggestions
 + Extensions to other programming languages ​​and IDEs
 
