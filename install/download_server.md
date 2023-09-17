@@ -5,6 +5,7 @@
 ## Java8
 | version | since | last updated|  what's new| download url |
 | ------ | ------ | ------ | ------| ------|
+|HotSecondsServer-future2.1| 2023-09-17 |  ----------- | Support MacOS 10.12| [HotSecondsServer-future2.1.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer-future2.1.zip)
 |HotSecondsServer-future2| 2023-09-06 |  ----------- | Unified remote RPC port| [HotSecondsServer-future2.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer-future2.zip)
 |HotSecondsServer-future| 2023-08-31 |  ----------- | Batch hot reloading files| [HotSecondsServer-future.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer-future.zip)
 |HotSecondsServer-beat5| 2023-08-21 |  ----------- | Package all static libraries of boot.dll | [HotSecondsServer-beat5.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsSever_beat/HotSecondsServer-beat5.zip)
@@ -18,6 +19,7 @@
 ## Java11 & Java17
 | version | since | last updated|  what's new| download url |
 | ------ | ------ | ------ | ------| ------|
+HotSecondsServer11-future2.1 | 2023-09-17 |  ----------- | Support MacOS 10.12 |[HotSecondsServer11-future2.1.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer11-future2.zip)
 HotSecondsServer11-future2 | 2023-09-16 |  ----------- | init |[HotSecondsServer11-future2.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer11-future2.zip)
 
 
