@@ -32,7 +32,7 @@ Just open HotSeconds, then right-click to hotswap any file, let me show you hot 
 
 <br>
 
-You can also right-click to hot reloading mybatis xml <br><br>
+You can also right-click to hot reloading mybatis xml. <br><br>
 ![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/mybatis1.gif)
 
 
