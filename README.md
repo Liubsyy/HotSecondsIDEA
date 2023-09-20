@@ -25,3 +25,14 @@
 This is a HotSeconds extension project to support more frameworks and more features.
  
  [HotSecondsExtension](https://github.com/Liubsyy/HotSecondsExtension)
+
+ # Quick Start
+Just open HotSeconds, then right-click to hotswap any file, let me show you hot reloading of adding fields and adding SpringMVC methods.<br><br>
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/springmvc1.gif)
+
+<br>
+
+You can also right-click to hot reloading mybatis xml <br><br>
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/mybatis1.gif)
+
+
