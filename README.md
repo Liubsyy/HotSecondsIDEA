@@ -35,4 +35,10 @@ Just open HotSeconds, then right-click to hotswap any file, let me show you hot 
 You can also right-click to hot reloading mybatis xml. <br><br>
 ![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/mybatis1.gif)
 
+<br>
+
+
+Multiple files modified? Try batch hot deployment.<br><br>
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/batchhot.gif)
+
 
