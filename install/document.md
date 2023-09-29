@@ -1,5 +1,5 @@
 ## Introduction
-HotSeconds is a Java remote hot deployment plug-in, including HotSecondsClient and HotSecondsServer. In theory, it can hot update any file (java, xml, html, css, js, etc.), and also supports hot update of common frameworks (Spring, MyBatis). It can save a lot of time in packaging->deployment->startup. <br>
+HotSeconds is a remote hot deployment plugin for Java, including HotSecondsClient and HotSecondsServer. In theory, it can hot update any file (java, xml, html, css, js, etc.), and also supports hot update of common frameworks (Spring, MyBatis). It can save a lot of time in packaging->deployment->startup. <br>
 Currently supports Java8, Java11 and Java17.
 
 #### Hot-deployment file range
