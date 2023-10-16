@@ -27,7 +27,7 @@ This is a HotSeconds extension project to support more frameworks and more featu
  [HotSecondsExtension](https://github.com/Liubsyy/HotSecondsExtension)
 
  # Quick Start
-Just open HotSeconds, then right-click to hotswap any file, let me show you hot reloading of adding fields and adding SpringMVC methods.<br><br>
+ Install and open HotSeconds, then right-click to hotswap any file, let me show you hot reloading of adding fields and adding SpringMVC methods.<br><br>
 ![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/springmvc1.gif)
 
 <br>
