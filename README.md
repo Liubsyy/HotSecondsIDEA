@@ -17,6 +17,9 @@
  [HotSecondsClient](https://plugins.jetbrains.com/plugin/21635-hotsecondsclient)
  <br>
 
+ [HotSecondsProxy](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/proxyserver.md)
+ <br>
+
  # HotSeconds Extension
 
 This is a HotSeconds extension project to support more frameworks and more features.
