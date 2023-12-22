@@ -29,8 +29,8 @@ HotSeconds是一款Java远程热部署的插件，分为HotSecondsClient和HotSe
 
 ### 下载链接
  
- - 服务端插件[HotSecondsServer](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/download_server.md)
- - 客户端插件 HotSecondsClient 直接在IDEA的Plugins->Marketplace中搜索HotSecondsClient，下载安装即可
+ - 服务端插件 [HotSecondsServer](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/download_server.md)
+ - 客户端插件 [HotSecondsClient](https://plugins.jetbrains.com/plugin/21635-hotsecondsclient)
  - 代理服务器 [HotSecondsProxy](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/proxyserver.md)
  
  ### 扩展包
