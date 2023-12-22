@@ -40,11 +40,6 @@ HotSecondsServer扩展包，支持更多的框架热更新，持续更新中...
  [HotSecondsExtension](https://github.com/Liubsyy/HotSecondsExtension)
  
 
-## 问题反馈和交流
-可以先看常见问题和解决方案，如果还有问题直接建Issues即可，同时也欢迎加QQ群173093336交流。
-
-
-
 
  ## 使用例子展示
  按文档安装完之后，右键选择Hot swap this file to remote即可实现热更新，下面展示一个SpringMVC新增字段和方法的热部署<br><br>
@@ -60,5 +55,10 @@ HotSecondsServer扩展包，支持更多的框架热更新，持续更新中...
 
 批量热更新文件，支持热更新修改过的文件和svn/git未提交的差异文件<br><br>
 ![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/batchhot.gif)
+
+<br>
+
+## 问题反馈和交流
+可以先看常见问题和解决方案，如果还有问题直接建Issues即可，同时也欢迎加QQ群173093336交流。
 
 
