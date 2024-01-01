@@ -5,6 +5,7 @@
 ## Java8
 | version | since |   what's new| download url |
 | ------ | ------ |  ------| ------|
+|HotSecondsServer-future4.1| 2024-1-1 | Compatible with springboot2 | [HotSecondsServer-future4.1.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/ProxyServer/HotSecondsServer-future4.1.zip)
 |HotSecondsServer-future4| 2023-11-28 |  Proxy connection | [HotSecondsServer-future4.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/ProxyServer/HotSecondsServer-future4.zip)
 |HotSecondsServer-future3| 2023-11-19 |  Run method2.0 and get value from server | [HotSecondsServer-future3.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer-future3.zip)
 |HotSecondsServer-future2.1| 2023-09-17 |  Support MacOS 10.12| [HotSecondsServer-future2.1.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer-future2.1.zip)
