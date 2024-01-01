@@ -33,7 +33,8 @@ HotSeconds是一款Java远程热部署的插件(当然也支持本地热部署)�
  - 代理服务器 [HotSecondsProxy](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/proxyserver.md)
 
 ### 插件扩展
-- [扩展开发步骤](https://github.com/Liubsyy/HotSecondsIDEA/wiki/HotSeconds%E6%89%80%E6%9C%89%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D#27-%E6%8F%92%E4%BB%B6%E6%89%A9%E5%B1%95)
+本插件是可以支持自定义扩展的，比如热更新某个文件之后执行自定义的逻辑
+- [插件扩展步骤](https://github.com/Liubsyy/HotSecondsIDEA/wiki/HotSeconds%E6%89%80%E6%9C%89%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D#27-%E6%8F%92%E4%BB%B6%E6%89%A9%E5%B1%95)
 - [HotSecondsExtension项目](https://github.com/Liubsyy/HotSecondsExtension)
 
 
