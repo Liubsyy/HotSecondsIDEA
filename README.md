@@ -39,16 +39,18 @@ HotSeconds是一款Java远程热部署的插件(当然也支持本地热部署)�
 
 
  ### 使用演示
- 按文档安装完之后，右键选择Hot swap this file to remote即可实现热更新，下面展示一个SpringMVC新增字段和方法的热部署<br><br>
-![springmvc1.gif](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/springmvc1.gif)
+ 按文档安装完之后，右键选择Hot swap this file to remote即可实现热更新<br>
+ 
+ 下面演示一个SpringMVC新增字段和方法的热部署<br><br>
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/springmvc1.gif)
 
 
 下面是一个MyBatis的xml文件的热更新 <br><br>
-![mybatis1.gif](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/mybatis1.gif)
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/mybatis1.gif)
 
 
 批量热更新文件，支持热更新修改过的文件和svn/git未提交的差异文件<br><br>
-![batchhot.gif](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/batchhot.gif)
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/batchhot.gif)
 
 <br>
 
