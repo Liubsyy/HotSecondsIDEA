@@ -39,7 +39,7 @@ HotSeconds是一款Java远程热部署的插件(当然也支持本地热部署)�
 
 
  ### 使用演示
- 按文档安装完之后，右键选择Hot swap this file to remote即可实现热更新<br>
+ 按文档安装完之后连接目标端口，右键选择Hot swap this file to remote即可实现热更新，也可以选择批量热更新<br>
  
  下面演示一个SpringMVC新增字段和方法的热部署<br><br>
 ![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/springmvc1.gif)
