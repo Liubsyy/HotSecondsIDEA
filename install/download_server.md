@@ -5,6 +5,7 @@
 ## Java8
 | version | since |   what's new| download url |
 | ------ | ------ |  ------| ------|
+|HotSecondsServer-futur5| 2024-1-11 | More classloaders | [HotSecondsServer-future5.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/moreclassloaders/HotSecondsServer-future5.zip)
 |HotSecondsServer-future4.1| 2024-1-1 | Compatible with springboot2 | [HotSecondsServer-future4.1.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/ProxyServer/HotSecondsServer-future4.1.zip)
 |HotSecondsServer-future4| 2023-11-28 |  Proxy connection | [HotSecondsServer-future4.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/ProxyServer/HotSecondsServer-future4.zip)
 |HotSecondsServer-future3| 2023-11-19 |  Run method2.0 and get value from server | [HotSecondsServer-future3.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer-future3.zip)
@@ -22,6 +23,7 @@
 ## Java11 & Java17
 | version | since |   what's new| download url |
 | ------ | ------ |  ------| ------|
+|HotSecondsServer-futur5| 2024-1-11 | More classloaders | [HotSecondsServer11-future5.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/moreclassloaders/HotSecondsServer11-future5.zip)
 |HotSecondsServer11-future4.1| 2024-1-1 |  Compatible with springboot2 | [HotSecondsServer11-future4.1.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/ProxyServer/HotSecondsServer11-future4.1.zip)
 |HotSecondsServer11-future4| 2023-11-28 |  Proxy connection | [HotSecondsServer11-future4.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/ProxyServer/HotSecondsServer11-future4.zip)
 |HotSecondsServer11-future3| 2023-11-19 |   Run method2.0 and get value from server | [HotSecondsServer11-future3.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/HotSecondsServer_future/HotSecondsServer11-future3.zip)
