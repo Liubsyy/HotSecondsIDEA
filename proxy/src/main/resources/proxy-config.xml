@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- HotSeconds代理服务器配置 -->
+<liubs>
+    <proxyserver>
+
+        <!-- 这个是暴露给HotSecondsClient连接的ip-->
+        <host>请修改这个ip</host>
+
+        <!-- 这个是当前代理服务器开启的端口 -->
+        <port>12023</port>
+
+    </proxyserver>
+</liubs>
