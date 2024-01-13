@@ -1,0 +1,64 @@
+<idea-plugin>
+  <id>liubsyyflymoon</id>
+  <name>HotSecondsClientIDEA</name>
+  <version>1.0</version>
+  <vendor email="liubsyy@gmail.com" url="http://www.yingying.com">liubsyy</vendor>
+
+  <description>
+    <![CDATA[
+        This plugin is mainly used for hot deployment to remote server after coding.
+        <br>
+        It can support hot reloading of java, xml, html, css, js and other files,
+        and also supports hot reloading of frameworks such as spring and mybatis.
+        <br>
+        It needs to be used with HotSecondsServer on the server side.
+<br>
+     Visit <a href="https://github.com/Liubsyy/HotSecondsIDEA">HotSecondsIDEA</a> to see more detailed documents.
+    ]]>
+  </description>
+
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.java</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <projectService serviceImplementation="com.liubs.ff.hotdeploy.HotDeployBean"/>
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="switchState" class="com.liubs.ff.ui.SwitchStateRunMenu" text="Remote HotDeploy"
+            icon="MyIcons.HARRY_POTTER"
+            description="Remote HotDeployment">
+      <add-to-group group-id="RunMenu" anchor="first"/>
+    </action>
+    <action id="switchStateBar"
+            class="com.liubs.ff.ui.SwitchStateToolBar"
+            text="Remote HotDeployment"
+            description="Remote HotDeployment"
+            icon="MyIcons.HARRY_POTTER">
+      <add-to-group group-id="ToolbarRunGroup" anchor="before" relative-to-action="Debug"/>
+    </action>
+
+
+    <action id="hotDeployPopMenu" class="com.liubs.ff.ui.HotDeployPopMenu"
+            icon="MyIcons.MARIO"
+            text="Deployment This File"
+            description="Deployment This File">
+      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+    </action>
+    <action id="hotDeployPopMenuJar" class="com.liubs.ff.ui.HotDeployPopMenuJar"
+            icon="MyIcons.MERMAID"
+            text="Deployment This Jar"
+            description="Deployment This Jar">
+      <add-to-group group-id="EditorPopupMenu" anchor="before" relative-to-action="hotDeployPopMenu"/>
+    </action>
+
+  </actions>
+
+</idea-plugin>
