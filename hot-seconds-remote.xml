@@ -10,13 +10,35 @@
     <remote_port>2023</remote_port>
 
     <init_delay>3000</init_delay>
-    
-    <!-- 普通java项目填 AppClassLoader,Tomcat7及以下填WebappClassLoader，Tomcat8及以上填ParallelWebappClassLoader, SpringBoot项目填 LaunchedURLClassLoader -->
+
+    <!--
+        普通java项目填 AppClassLoader,
+        Tomcat项目填 WebappClassLoader/ParallelWebappClassLoader(Tomcat7及以下填WebappClassLoader，Tomcat8及以上填ParallelWebappClassLoader),
+        SpringBoot项目填 LaunchedURLClassLoader
+    -->
     <classloader>AppClassLoader</classloader>
-    
-    <!-- 这里的扩展classname是热加载某个文件的前置和后置操作,需要实现IHotExtHandler接口 -->
+
+    <!-- 这里的扩展classname是热加载某个文件的前置和后置操作,需要实现IHotExtHandler接口，复制IHotExtHandler.java到工程即可 -->
     <dev-ext>
-        <classname>com.liubs.ext.XXHandler</classname>
+        <!--        <classname>com.liubs.ext.XXHandler</classname>-->
     </dev-ext>
-    
+
+    <!--
+    多classloaders模式
+    以下的sub-classloaders在90%的情况下都不需要配置，只有每个模块的classloader不一样才需要配置
+    name: 自定义名字，会在客户端展示出来供选择，可以用模块名字
+    classloader: 全路径名
+    uniqueclass: 全路径类名，已经加载且是唯一的class，一定要已经加载到classloader中而不是仅在classpath中还未加载
+ -->
+    <sub-classloaders>
+
+        <!-- eg:
+        <mapping>
+            <name>myclassloader1</name>
+            <classloader>com.liubs.web.classloaders.MyClassLoader</classloader>
+            <uniqueclass>com.liubs.web.classloaders.a.A</uniqueclass>
+        </mapping>
+        -->
+    </sub-classloaders>
+
 </liubs>
