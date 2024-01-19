@@ -24,8 +24,8 @@ HotSeconds是一款Java远程热部署的插件(当然也支持本地热部署)�
 ### 文档链接
 - [所有功能介绍](https://github.com/Liubsyy/HotSecondsIDEA/wiki/HotSeconds%E6%89%80%E6%9C%89%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D)
 - [安装文档](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md)
+- [安装文档(萌新版)](https://juejin.cn/post/7325375988853358607)
 - [常见问题和解决方案](https://github.com/Liubsyy/HotSecondsIDEA/wiki/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88)
-
 
 ### 下载链接
  
