@@ -255,7 +255,7 @@ public class ClassPathBeanDefinitionScannerAgent {
     public BeanDefinition resolveBeanDefinition(byte[] bytes) throws IOException {
         Resource resource = new ByteArrayResource(bytes);
         resetCachingMetadataReaderFactoryCache();
-        MetadataReader metadataReader = getMetadataReaderFactory().getMetadataReader(resource);
+        MetadataReader metadataReader = getMetadataReader(resource);
 
         if (isCandidateComponent(metadataReader)) {
             ScannedGenericBeanDefinition sbd = new ScannedGenericBeanDefinition(metadataReader);
@@ -277,6 +277,17 @@ public class ClassPathBeanDefinitionScannerAgent {
     private MetadataReaderFactory getMetadataReaderFactory() {
         return (MetadataReaderFactory) ReflectionHelper.get(scanner, "metadataReaderFactory");
     }
+
+    private MetadataReader getMetadataReader(Resource resource) throws IOException {
+        ClassLoader oldClassLoader = Thread.currentThread().getContextClassLoader();
+        try {
+            Thread.currentThread().setContextClassLoader(getClass().getClassLoader());
+            return getMetadataReaderFactory().getMetadataReader(resource);
+        } finally {
+            Thread.currentThread().setContextClassLoader(oldClassLoader);
+        }
+    }
+
 
     // metadataReader contains cache of loaded classes, reset this cache before BeanDefinition is resolved
     private void resetCachingMetadataReaderFactoryCache() {

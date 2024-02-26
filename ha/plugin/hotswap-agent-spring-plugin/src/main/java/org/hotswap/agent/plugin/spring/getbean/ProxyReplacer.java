@@ -93,7 +93,7 @@ public class ProxyReplacer {
             } catch (ClassNotFoundException e) {
                 LOGGER.error("error adding org.springframework.core.InfrastructureProxy to proxy class", e);
             }
-            return Proxy.newProxyInstance(beanFactry.getClass().getClassLoader(), interfaces, handler);
+            return Proxy.newProxyInstance(bean.getClass().getClassLoader(), interfaces, handler);
         } else if (EnhancerProxyCreater.isSupportedCglibProxy(bean)) {
             // already a proxy, skip..
             if (bean.getClass().getName().contains("$HOTSWAPAGENT_")) {
