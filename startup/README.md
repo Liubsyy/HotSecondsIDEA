@@ -3,5 +3,5 @@
 
 
 ### 如何打包？
-- 1.hotswap-core 模块进行 mvn install
+- 1.hotswap-core 模块进行 mvn clean install
 - 2.startup模块 mvn clean install可得到HotSecondsServer.jar覆盖原安装包的jar即可
