@@ -13,11 +13,10 @@ If you have any questions, you can just create Issues, which is convenient for o
 
 <br>
 
-## HotSecondsServer Download
-[HotSecondsServer.zip Installation Package Download Link](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/download_server.md)
+## HotSecondsServer Installation
 
 ### 1. Install the server package ###
-###### Warm reminder: If a certain version is not available, just change it, don’t hang yourself on a tree ######
+[HotSecondsServer.zip Installation Package Download Link](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/download_server.md)
 
 #### Java8 ####
 【Linux】 Download HotSecondsServer.zip and decompress it locally, then go to [libjvm.so](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/libjvm_so.md) to find the corresponding jdk version. No need after downloading Rename it and place it directly under ./lib in the decompressed directory, then upload it to the server (note the directory as $path1), and execute sh install.sh<br>
@@ -27,11 +26,11 @@ If you have any questions, you can just create Issues, which is convenient for o
 
 #### Java11 #####
 First download [Trava-JDK11](https://github.com/TravaOpenJDK/trava-jdk-11-dcevm/releases) as your JDK startup. This JDK is modified based on OpenJDK11
-<br>Then download HotSecondsServer11.zip, unzip it and put it on the server (note the directory as $path1)
+<br>Then download HotSecondsServer.zip, unzip it and put it on the server (note the directory as $path1)
 
 #### Java17 #####
 First download [JBR17](https://github.com/JetBrains/JetBrainsRuntime/releases) as your JDK startup. This JDK is modified based on OpenJDK17
-<br>Then download HotSecondsServer11.zip, unzip it and put it on the server (note the directory as $path1)
+<br>Then download HotSecondsServer.zip, unzip it and put it on the server (note the directory as $path1)
 
 ###### If you use OracleJDK and ordinary OpenJDK, you can also start it, but hot update does not support new fields and methods, and other functions are normal ######
 
