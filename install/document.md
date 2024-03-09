@@ -47,7 +47,6 @@ The secret parameter only needs to be unique. You need to ensure that the secret
 Add jvm parameters to enable hot deployment agent
 * Java8 adds jvm parameters: -XXaltjvm=dcevm -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml
 * Java11 adds jvm parameters: --add-opens java.desktop/com.sun.beans.introspect=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED -javaagent:$path1/HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml
-* 
 * Java17 adds jvm parameters: --add-opens java.desktop/com.sun.beans.introspect=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED -XX:+AllowEnhancedClassRedefinition -javaagent:$path1 /HotSecondsServer.jar=hotconf=$path2/hot-seconds-remote.xml
 
 Where $path1 is the directory uploaded in step 1, $path2 is the directory uploaded in step 2
