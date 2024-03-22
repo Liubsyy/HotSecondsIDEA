@@ -15,10 +15,11 @@ HotSeconds是一款Java远程热部署的插件(当然也支持本地热部署)�
 - 支持自定义扩展，比如热更新某个文件的刷新逻辑
 
 **最新功能预览**
-- HotSecondsClient-1.11.0+HotSecondsServer-future5支持[多classloader模式](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md#%E9%99%84-%E5%A4%9Aclassloader%E6%A8%A1%E5%BC%8F)
+- 支持刷新static字段和代码块
+- 支持[多classloader模式](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3.md#%E9%99%84-%E5%A4%9Aclassloader%E6%A8%A1%E5%BC%8F)
 - 支持[代理服务器连接](https://github.com/Liubsyy/HotSecondsIDEA/wiki/HotSeconds%E6%89%80%E6%9C%89%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D#211-%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1%E5%99%A8)，如果本地和容器不能直连的话可以试试这种方式
-- HotSecondsClient-1.10.0+HotSecondsServer-future3版本支持 获取远程字段值，远程执行方法2.0
-- HotSecondsClient-1.9.0 支持连接多个不同的服务器(secret+ip+port多远程连接源)
+- 支持 获取远程字段值，远程执行方法2.0
+- 支持连接多个不同的服务器(secret+ip+port多远程连接源)
 
 
 ### 文档链接
