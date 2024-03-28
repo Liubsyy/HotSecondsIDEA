@@ -61,4 +61,7 @@ HotSeconds是一款Java远程热部署的插件(当然也支持本地热部署)�
 **如果本插件对你有帮助，请点击 ⭐Star 支持一下吧，后续为大家带来更多的黑科技**
 
 
+### Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Liubsyy/HotSecondsIDEA&type=Date)](https://star-history.com/#Liubsyy/HotSecondsIDEA&Date)
 
