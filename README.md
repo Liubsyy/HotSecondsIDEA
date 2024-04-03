@@ -3,8 +3,8 @@
 [![GitHub](https://img.shields.io/github/stars/Liubsyy/HotSecondsIDEA.svg?style=social&label=Stars)](https://github.com/Liubsyy/HotSecondsIDEA)
 [![License](https://img.shields.io/badge/License-GPL3.0-blue.svg)](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/LICENSE)
 [![QQ](https://img.shields.io/badge/QQ-173093336-blue.svg)]()
-[![JDK-8](https://img.shields.io/badge/JDK-8-green.svg)]()
-[![JDK-11](https://img.shields.io/badge/JDK-11-green.svg)]()
+[![JDK-8](https://img.shields.io/badge/JDK-8-red.svg)]()
+[![JDK-11](https://img.shields.io/badge/JDK-11-blue.svg)]()
 [![JDK-17](https://img.shields.io/badge/JDK-17-green.svg)]()
 
 ### 简介
