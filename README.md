@@ -12,11 +12,7 @@
 HotSeconds是一款Java远程热部署的插件(当然也支持本地热部署)，分为HotSecondsClient(IDEA热部署插件)和HotSecondsServer(服务端agent)，理论上来说可以热更新任何文件(java,xml,html,css,js等)，也支持常用框架(Spring,MyBatis)的热更新，可以节省大量的打包->部署->启动的时间。<br>
 目前支持Java8，Java11和Java17。
 
-<br>
-
-[English Document](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/document.md)
-
-
+- [English Document](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/install/document.md)
 
 ### 插件特性
 - 热更新Java类，包括修改代码块，新增字段，新增方法，新增类，以及动态代理类
