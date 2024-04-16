@@ -18,20 +18,18 @@
  */
 package org.hotswap.agent.plugin.mybatis;
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.hotswap.agent.annotation.FileEvent;
-import org.hotswap.agent.annotation.Init;
-import org.hotswap.agent.annotation.OnResourceFileEvent;
-import org.hotswap.agent.annotation.Plugin;
+import org.hotswap.agent.annotation.*;
 import org.hotswap.agent.command.Command;
 import org.hotswap.agent.command.ReflectionCommand;
 import org.hotswap.agent.command.Scheduler;
 import org.hotswap.agent.config.PluginConfiguration;
+import org.hotswap.agent.javassist.*;
 import org.hotswap.agent.logging.AgentLogger;
 import org.hotswap.agent.plugin.mybatis.transformers.MyBatisTransformers;
+
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Reload MyBatis configuration after entity create/change.
@@ -75,6 +73,56 @@ public class MyBatisPlugin {
             refresh(500);
         }
     }
+
+    @OnClassLoadEvent(
+            classNameRegexp = "org.apache.ibatis.session.Configuration\\$StrictMap"
+    )
+    public static void patchStrictMap(CtClass ctClass, ClassPool classPool) throws NotFoundException, CannotCompileException {
+        CtMethod method = ctClass.getDeclaredMethod("put", new CtClass[]{classPool.get(String.class.getName()), classPool.get(Object.class.getName())});
+        method.insertBefore("if(containsKey($1)){remove($1);}");
+    }
+
+    @OnClassLoadEvent(
+            classNameRegexp = "com.baomidou.mybatisplus.core.MybatisConfiguration\\$StrictMap",
+            events = {LoadEvent.DEFINE}
+    )
+    public static void patchPlusStrictMap(CtClass ctClass, ClassPool classPool) throws NotFoundException, CannotCompileException {
+        CtMethod method = ctClass.getDeclaredMethod("put", new CtClass[]{classPool.get(String.class.getName()), classPool.get(Object.class.getName())});
+        method.insertBefore("if(containsKey($1)){remove($1);}");
+    }
+
+
+    @OnClassLoadEvent(
+            classNameRegexp = "org.apache.ibatis.session.Configuration"
+    )
+    public static void transformConfiguration(CtClass ctClass, ClassPool classPool) throws NotFoundException, CannotCompileException {
+        try {
+            CtMethod addMappedStatementMethod = ctClass.getDeclaredMethod("addMappedStatement", new CtClass[]{classPool.get("org.apache.ibatis.mapping.MappedStatement")});
+            addMappedStatementMethod.setBody("{if(mappedStatements.containsKey($1.getId())){mappedStatements.remove($1.getId());}mappedStatements.put($1.getId(),$1);}");
+            CtMethod addParameterMapMethod = ctClass.getDeclaredMethod("addParameterMap", new CtClass[]{classPool.get("org.apache.ibatis.mapping.ParameterMap")});
+            addParameterMapMethod.setBody("{if(parameterMaps.containsKey($1.getId())){parameterMaps.remove($1.getId());}parameterMaps.put($1.getId(),$1);}");
+            CtMethod addResultMapMethod = ctClass.getDeclaredMethod("addResultMap", new CtClass[]{classPool.get("org.apache.ibatis.mapping.ResultMap")});
+            addResultMapMethod.setBody("{if(resultMaps.containsKey($1.getId())){resultMaps.remove($1.getId());}resultMaps.put($1.getId(),$1);checkLocallyForDiscriminatedNestedResultMaps($1);checkGloballyForDiscriminatedNestedResultMaps($1);}");
+            CtMethod addKeyGeneratorMethod = ctClass.getDeclaredMethod("addKeyGenerator", new CtClass[]{classPool.get("java.lang.String"), classPool.get("org.apache.ibatis.executor.keygen.KeyGenerator")});
+            addKeyGeneratorMethod.setBody("{if(keyGenerators.containsKey($1)){keyGenerators.remove($1);}keyGenerators.put($1,$2);}");
+            CtMethod addCacheMethod = ctClass.getDeclaredMethod("addCache", new CtClass[]{classPool.get("org.apache.ibatis.cache.Cache")});
+            addCacheMethod.setBody("{if(caches.containsKey($1.getId())){caches.remove($1.getId());}caches.put($1.getId(),$1);}");
+        } catch (Throwable var9) {
+            LOGGER.warning("mybatis class enhance error:" + var9.getMessage(), new Object[0]);
+        }
+
+    }
+
+    @OnClassLoadEvent(
+            classNameRegexp = "com.baomidou.mybatisplus.core.MybatisConfiguration",
+            events = {LoadEvent.DEFINE}
+    )
+    public static void transformPlusConfiguration(CtClass ctClass, ClassPool classPool) throws NotFoundException, CannotCompileException {
+        CtMethod removeMappedStatementMethod = CtNewMethod.make("public void $$removeMappedStatement(String statementName){if(mappedStatements.containsKey(statementName)){mappedStatements.remove(statementName);}}", ctClass);
+        ctClass.addMethod(removeMappedStatementMethod);
+        ctClass.getDeclaredMethod("addMappedStatement", new CtClass[]{classPool.get("org.apache.ibatis.mapping.MappedStatement")}).insertBefore("$$removeMappedStatement($1.getId());");
+    }
+
 
     // reload the configuration - schedule a command to run in the application classloader and merge
     // duplicate commands.
