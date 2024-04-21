@@ -101,6 +101,11 @@ public class AnonymousClassPatchPlugin {
         if (classPool.find(className) == null)
             return null;
 
+        //2024-04-22
+        //远程热部署时，匿名类如果新增引用字段，classPool取到的类信息还是老的class，会导致NoSuchMethodError问题（匿名构造函数还是老的）
+        //这里在队首插入热更新的类，时刻保证获取到的类的信息是最新的
+        classPool.insertClassPath("./remote_src");
+
         AnonymousClassInfos info = getStateInfo(classLoader, classPool, mainClass);
 
         String compatibleName = info.getCompatibleTransition(javaClass);
