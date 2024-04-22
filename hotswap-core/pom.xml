@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.hotswapagent</groupId>
-    <artifactId>hotswap-agent-aggregator</artifactId>
-    <version>1.4.1</version>
+    <artifactId>hotswap-core</artifactId>
+    <version>1.4.1-future</version>
     <packaging>pom</packaging>
 
-    <name>Hotswap Agent Aggregator</name>
+    <name>hotswap-core</name>
     <description>Agregator for Hotswap Agent projects</description>
     <url>https://github.com/HotswapProjects/HotswapAgent</url>
 

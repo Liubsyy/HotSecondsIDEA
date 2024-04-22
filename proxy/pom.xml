@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <groupId>com.liubs</groupId>
-    <artifactId>HotSecondsProxy</artifactId>
+    <groupId>com.liubs.hotseconds</groupId>
+    <artifactId>proxy</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
 
     <build>
-        <finalName>${project.artifactId}</finalName>
+        <finalName>HotSecondsProxy</finalName>
 
         <plugins>
             <plugin>
