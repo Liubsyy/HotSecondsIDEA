@@ -69,9 +69,9 @@
                 <version>3.2.0</version>
                 <configuration>
                     <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                        </manifest>
+<!--                        <manifest>-->
+<!--                            <addClasspath>true</addClasspath>-->
+<!--                        </manifest>-->
                         <manifestEntries>
                             <Premain-Class>com.liubs.HotSecondsEntrance</Premain-Class>
                             <Can-Redefine-Classes>true</Can-Redefine-Classes>
