@@ -61,14 +61,16 @@ public class HotswapAgent {
         premain(args, inst);
     }
 
+    private static boolean init = false;
     public static void premain(String args, Instrumentation inst) {
-
-        LOGGER.info("Loading Hotswap agent {{}} - unlimited runtime class redefinition.", Version.version());
-        parseArgs(args);
-        fixJboss7Modules();
-        PluginManager.getInstance().init(inst);
-        LOGGER.debug("Hotswap agent initialized.");
-
+        if(!init){
+            LOGGER.info("Loading Hotswap agent {{}} - unlimited runtime class redefinition.", Version.version());
+            parseArgs(args);
+            fixJboss7Modules();
+            PluginManager.getInstance().init(inst);
+            LOGGER.debug("Hotswap agent initialized.");
+            init = true;
+        }
     }
 
     public static void parseArgs(String args) {

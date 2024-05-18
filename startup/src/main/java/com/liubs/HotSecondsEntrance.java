@@ -1,5 +1,7 @@
 package com.liubs;
 
+import org.hotswap.agent.HotswapAgent;
+
 import java.io.File;
 import java.lang.instrument.Instrumentation;
 import java.net.URL;
@@ -32,6 +34,7 @@ public class HotSecondsEntrance {
 
     public static void premain(String args, Instrumentation inst) throws Exception {
         start0(args,inst);
+        HotswapAgent.premain(args,inst);
     }
 
 
