@@ -19,7 +19,6 @@
         <module>plugin/hotswap-agent-jersey1-plugin</module>
         <module>plugin/hotswap-agent-jersey2-plugin</module>
         <module>plugin/hotswap-agent-jetty-plugin</module>
-        <module>plugin/hotswap-agent-tomcat-plugin</module>
         <module>plugin/hotswap-agent-zk-plugin</module>
         <module>plugin/hotswap-agent-logback-plugin</module>
         <module>plugin/hotswap-agent-log4j2-plugin</module>
