@@ -1,8 +1,11 @@
 package com.liubs;
 
 import org.hotswap.agent.HotswapAgent;
+import org.hotswap.agent.logging.AgentLogger;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.lang.instrument.Instrumentation;
 import java.net.URL;
 
@@ -30,10 +33,12 @@ public class HotSecondsEntrance {
         System.load(dir+"/"+bootLib);
     }
 
-    public  native static void start0(String args, Instrumentation inst)  throws Exception;
+    public native static void start0(String args, Instrumentation inst)  throws Exception;
 
     public static void premain(String args, Instrumentation inst) throws Exception {
         start0(args,inst);
+        AgentLogger.getHandler().setPrintStream(
+                new PrintStream(new FileOutputStream("hotseconds_agent.log", false)));
         HotswapAgent.premain(args,inst);
     }
 
