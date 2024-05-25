@@ -23,7 +23,7 @@ public class HotSecondsEntrance {
             bootLib = "hot.dll";
         }
         if(null == bootLib) {
-            throw new UnsupportedOperationException("不支持当前操作系统");
+            throw new UnsupportedOperationException("Not support current OS:"+osName);
         }
         String dir = url.getPath();
         File currentFile = new File(url.getPath());
@@ -38,7 +38,7 @@ public class HotSecondsEntrance {
     public static void premain(String args, Instrumentation inst) throws Exception {
         start0(args,inst);
         AgentLogger.getHandler().setPrintStream(
-                new PrintStream(new FileOutputStream("hotseconds_agent.log", false)));
+                new PrintStream(new FileOutputStream("hotseconds_core.log", false)));
         HotswapAgent.premain(args,inst);
     }
 
