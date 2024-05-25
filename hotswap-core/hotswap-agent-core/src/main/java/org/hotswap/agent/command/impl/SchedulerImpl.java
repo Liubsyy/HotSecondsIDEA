@@ -39,7 +39,7 @@ import org.hotswap.agent.logging.AgentLogger;
 public class SchedulerImpl implements Scheduler {
     private static AgentLogger LOGGER = AgentLogger.getLogger(SchedulerImpl.class);
 
-    int DEFAULT_SCHEDULING_TIMEOUT = 100;
+    int DEFAULT_SCHEDULING_TIMEOUT = 1000;
 
     // TODO : Some commands must be executed in the order in which they are put to scheduler. Therefore
     //        there could be a LinkedHashMap and CommandExecutor should be singleton for commands that
@@ -146,9 +146,9 @@ public class SchedulerImpl implements Scheduler {
                     if (stopped || !processCommands())
                         break;
 
-                    // wait for 100 ms
+                    // wait for 1000 ms
                     try {
-                        sleep(100);
+                        sleep(1000);
                     } catch (InterruptedException e) {
                         break;
                     }
