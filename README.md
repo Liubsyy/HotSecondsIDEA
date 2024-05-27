@@ -1,7 +1,7 @@
 ## HotSeconds
 
-[![GitHub](https://img.shields.io/github/stars/Liubsyy/HotSecondsIDEA.svg?style=social&label=Stars)](https://github.com/Liubsyy/HotSecondsIDEA)
-[![License](https://img.shields.io/badge/License-GPL2.0-blue.svg)](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/Liubsyy/HotSecondsIDEA)](./LICENSE)
+[![GitHub](https://img.shields.io/github/stars/Liubsyy/HotSecondsIDEA.svg?style=flat&label=Stars)](https://github.com/Liubsyy/HotSecondsIDEA)
 [![](https://img.shields.io/jetbrains/plugin/d/21635)](https://plugins.jetbrains.com/plugin/21635-hotsecondsclient)
 [![JDK-8](https://img.shields.io/badge/JDK-8-red.svg)]()
 [![JDK-11](https://img.shields.io/badge/JDK-11-blue.svg)]()
