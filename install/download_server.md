@@ -4,7 +4,7 @@
 ## x86
 | version | date |   download url |
 | ------ | ------ |  ------| 
-|HotSecondsServer-7.0| 2024-5-25 | [HotSecondsServer7.0.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/server7/HotSecondsServer7.0.zip)
+|HotSecondsServer-7.1| 2024-7-2 | [HotSecondsServer7.1.zip](https://github.com/Liubsyy/HotSecondsIDEA/releases/download/server7/HotSecondsServer7.1.zip)
 | ...... | Long years ago |  ...... | 
 
 ## Apple ARM Silicon
