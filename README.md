@@ -44,17 +44,19 @@ HotSeconds是一款Java远程热部署的插件(当然也支持本地热部署)�
 
 
  ### 使用演示
- 按文档安装完之后连接目标端口，右键选择Hot swap this file to remote即可实现单文件热更新，如果是java文件会先编译再热更新<br>
+ 按文档安装完之后连接目标端口，右键选择Hot swap this file to remote即可实现单文件热更新，如果是java文件会先编译再热更新。如果需要远程编译可选择Remote compilation and hot swap
  
  <img src="https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/wiki/hotswapfile.png" width="500" height="306" />
+ 
 
-右键选择Remote compilation and hot swap 可以在远程服务器编译并热更新，而Hot swap this file to remote是客户端编译。
+批量热更新：可以将修改的文件批量热部署到远程
 
-<img src="https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/wiki/remotecompilation.png" width="500" height="334" />
-
-
-也可批量热更新<br><br>
 ![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/batchhot.gif)
+
+热更新MyBatis
+
+![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/mybatis1.gif)
+
 
 <br>
 
