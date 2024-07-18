@@ -53,9 +53,10 @@ HotSeconds是一款Java远程热部署的插件(当然也支持本地热部署)�
 
 ![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/batchhot.gif)
 
-热更新MyBatis
+远程执行函数：简单高效触发某个函数获取结果
 
-![](https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/gif/mybatis1.gif)
+<img src="https://github.com/Liubsyy/HotSecondsIDEA/blob/master/img/wiki/remotemethod.png" width="800" height="600" />
+
 
 
 <br>
