@@ -18,29 +18,17 @@
  */
 package org.hotswap.agent.logging;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Create custom simple logging mechanism.
- * <p/>
- * Instead of java.util.logging because many frameworks and APP servers will complicate/override settings.
- *
- * @author Jiri Bubnik
- */
 public class AgentLogger {
 
-    /**
-     * Get logger for a class
-     *
-     * @param clazz class to log
-     * @return logger
-     */
+    private static final ConcurrentHashMap<String, AgentLogger> loggerCache = new ConcurrentHashMap<>();
+
     public static AgentLogger getLogger(Class clazz) {
-        return new AgentLogger(clazz);
+        return loggerCache.computeIfAbsent(clazz.getName(), n -> new AgentLogger(clazz));
     }
 
-    private static Map<String, Level> currentLevels = new HashMap<>();
+    private static ConcurrentHashMap<String, Level> currentLevels = new ConcurrentHashMap<>();
 
     public static void setLevel(String classPrefix, Level level) {
         currentLevels.put(classPrefix, level);
@@ -94,7 +82,10 @@ public class AgentLogger {
             if (className.startsWith(classPrefix)) {
                 if (classPrefix.length() > longestPrefix.length()) {
                     longestPrefix = classPrefix;
-                    classLevel = currentLevels.get(classPrefix);
+                    Level mappedLevel = currentLevels.get(classPrefix);
+                    if (mappedLevel != null) {
+                        classLevel = mappedLevel;
+                    }
                 }
             }
         }

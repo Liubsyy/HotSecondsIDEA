@@ -156,6 +156,7 @@ public class ClassPathBeanDefinitionScannerAgent {
                 continue;
             }
             scannerAgent.defineBean(beanDefinition);
+            scannerAgent.freezeConfiguration();
             break;
         }
 
@@ -171,7 +172,15 @@ public class ClassPathBeanDefinitionScannerAgent {
      * @param candidate the candidate to reload
      */
     public void defineBean(BeanDefinition candidate) {
-        synchronized (getClass()) { // TODO sychronize on DefaultListableFactory.beanDefinitionMap?
+        Object lockTarget;
+        if (registry instanceof DefaultListableBeanFactory) {
+            lockTarget = ReflectionHelper.getNoException((DefaultListableBeanFactory) registry,
+                    DefaultListableBeanFactory.class, "beanDefinitionMap");
+            if (lockTarget == null) lockTarget = this;
+        } else {
+            lockTarget = this;
+        }
+        synchronized (lockTarget) {
 
             ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(candidate);
             candidate.setScope(scopeMetadata.getScopeName());
@@ -199,11 +208,8 @@ public class ClassPathBeanDefinitionScannerAgent {
                     ResetRequestMappingCaches.reset(bf);
 
                 ProxyReplacer.clearAllProxies();
-                freezeConfiguration();
             }
         }
-
-
     }
 
     /**

@@ -24,9 +24,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.hotswap.agent.javassist.CannotCompileException;
 import org.hotswap.agent.javassist.ClassPool;
@@ -55,7 +54,7 @@ public class ClassLoaderDefineClassPatcher {
 
     private static AgentLogger LOGGER = AgentLogger.getLogger(ClassLoaderDefineClassPatcher.class);
 
-    private static Map<String, List<byte[]>> pluginClassCache = new HashMap<>();
+    private static ConcurrentHashMap<String, List<byte[]>> pluginClassCache = new ConcurrentHashMap<>();
 
     /**
      * Patch the classloader.
@@ -95,10 +94,10 @@ public class ClassLoaderDefineClassPatcher {
                     LOGGER.trace("Skipping class definition {} in app classloader {} - " +
                             "class is probably already defined.", pluginClass.getName(), classLoaderTo);
                 } catch (NoClassDefFoundError e) {
-                    LOGGER.trace("Skipping class definition {} in app classloader {} - " +
-                            "class has probably unresolvable dependency.", pluginClass.getName(), classLoaderTo);
-                } catch (Throwable e) {
-                    LOGGER.trace("Skipping class definition app classloader {} - " +
+                    LOGGER.warning("Skipping class definition {} in app classloader {} - " +
+                            "class has probably unresolvable dependency.", e, pluginClass.getName(), classLoaderTo);
+                } catch (Exception e) {
+                    LOGGER.warning("Skipping class definition app classloader {} - " +
                             "unknown error.", e, classLoaderTo);
                 }
             }
@@ -109,47 +108,33 @@ public class ClassLoaderDefineClassPatcher {
     }
 
     private List<byte[]> getPluginCache(final ClassLoader classLoaderFrom, final String pluginPath) {
-        List<byte[]> ret = null;
-        synchronized(pluginClassCache) {
-            ret = pluginClassCache.get(pluginPath);
-            if (ret == null) {
-                final List<byte[]> retList = new ArrayList<>();
-                Scanner scanner = new ClassPathScanner();
-                try {
-                    scanner.scan(classLoaderFrom, pluginPath, new ScannerVisitor() {
-                        @Override
-                        public void visit(InputStream file) throws IOException {
+        return pluginClassCache.computeIfAbsent(pluginPath, key -> {
+            final List<byte[]> retList = new ArrayList<>();
+            Scanner scanner = new ClassPathScanner();
+            try {
+                scanner.scan(classLoaderFrom, pluginPath, new ScannerVisitor() {
+                    @Override
+                    public void visit(InputStream file) throws IOException {
 
-                            // skip plugin classes
-                            // TODO this should be skipped only in patching application classloader. To copy
-                             // classes into agent classloader, Plugin class must be copied as well
-    //                        if (patchClass.hasAnnotation(Plugin.class)) {
-    //                            LOGGER.trace("Skipping plugin class: " + patchClass.getName());
-    //                            return;
-    //                        }
+                        ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
-                            ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+                        int readBytes;
+                        byte[] data = new byte[16384];
 
-                            int readBytes;
-                            byte[] data = new byte[16384];
-
-                            while ((readBytes = file.read(data, 0, data.length)) != -1) {
-                                buffer.write(data, 0, readBytes);
-                            }
-
-                            buffer.flush();
-                            retList.add(buffer.toByteArray());
+                        while ((readBytes = file.read(data, 0, data.length)) != -1) {
+                            buffer.write(data, 0, readBytes);
                         }
 
-                    });
-                } catch (IOException e) {
-                    LOGGER.error("Exception while scanning 'org/hotswap/agent/plugin'", e);
-                }
-                ret = retList;
-                pluginClassCache.put(pluginPath, ret);
+                        buffer.flush();
+                        retList.add(buffer.toByteArray());
+                    }
+
+                });
+            } catch (IOException e) {
+                LOGGER.error("Exception while scanning 'org/hotswap/agent/plugin'", e);
             }
-        }
-        return ret;
+            return retList;
+        });
     }
 
     /**

@@ -49,7 +49,7 @@ public class SchedulerImpl implements Scheduler {
     final Set<Command> runningCommands = Collections.synchronizedSet(new HashSet<Command>());
 
     Thread runner;
-    boolean stopped;
+    volatile boolean stopped;
 
     @Override
     public void scheduleCommand(Command command) {

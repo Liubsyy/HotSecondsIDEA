@@ -154,7 +154,7 @@ public class ResteasyPlugin {
         if (!registeredDispatchers.isEmpty()) {
             try {
                 Class<?> cmdClass = Class.forName(RefreshDispatchersCommand.class.getName(), true, appClassLoader);
-                Command cmd = (Command) cmdClass.newInstance();
+                Command cmd = (Command) cmdClass.getDeclaredConstructor().newInstance();
                 ReflectionHelper.invoke(cmd, cmdClass, "setupCmd",
                         new Class[] {java.lang.ClassLoader.class, java.util.Set.class}, classLoader, registeredDispatchers);
                 scheduler.scheduleCommand(cmd, timeout);

@@ -21,7 +21,7 @@ package org.hotswap.agent.config;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -43,7 +43,7 @@ public class PluginRegistry {
     private static AgentLogger LOGGER = AgentLogger.getLogger(PluginRegistry.class);
 
     // plugin class -> Map (ClassLoader -> Plugin instance)
-    protected Map<Class, Map<ClassLoader, Object>> registeredPlugins = Collections.synchronizedMap(new HashMap<Class, Map<ClassLoader, Object>>());
+    protected Map<Class, Map<ClassLoader, Object>> registeredPlugins = new ConcurrentHashMap<>();
 
     /**
      * Returns map of all registered plugins.
@@ -128,7 +128,7 @@ public class PluginRegistry {
                 if (registeredPlugins.containsKey(pluginClass))
                     continue;
 
-                registeredPlugins.put(pluginClass, Collections.synchronizedMap(new HashMap<ClassLoader, Object>()));
+                registeredPlugins.put(pluginClass, new ConcurrentHashMap<>());
 
                 if (annotationProcessor.processAnnotations(pluginClass, pluginClass)) {
                     LOGGER.debug("Plugin registered {}.", pluginClass);
@@ -314,12 +314,14 @@ public class PluginRegistry {
      */
     protected Object instantiate(Class<Object> plugin) {
         try {
-            return plugin.newInstance();
+            return plugin.getDeclaredConstructor().newInstance();
         } catch (InstantiationException e) {
             LOGGER.error("Error instantiating plugin: " + plugin.getClass().getName(), e);
         } catch (IllegalAccessException e) {
             LOGGER.error("Plugin: " + plugin.getClass().getName()
                     + " does not contain public no param constructor", e);
+        } catch (ReflectiveOperationException e) {
+            LOGGER.error("Error instantiating plugin: " + plugin.getClass().getName(), e);
         }
         return null;
     }

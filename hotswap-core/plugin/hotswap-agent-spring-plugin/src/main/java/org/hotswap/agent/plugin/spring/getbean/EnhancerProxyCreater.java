@@ -26,7 +26,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.security.ProtectionDomain;
 import java.util.Map;
-import java.util.WeakHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Creates a Cglib proxy instance along with the neccessary Callback classes. Uses either the repackaged version of
@@ -56,7 +56,7 @@ public class EnhancerProxyCreater {
     private final ClassLoader loader;
     private final ProtectionDomain pd;
 
-    final private Map<Object, Object> beanProxies = new WeakHashMap<>();
+    final private Map<Object, Object> beanProxies = new ConcurrentHashMap<>();
 
     public EnhancerProxyCreater(ClassLoader loader, ProtectionDomain pd) {
         super();
@@ -94,24 +94,17 @@ public class EnhancerProxyCreater {
     }
 
     private Object create(Object beanFactry, Object bean, Class<?>[] paramClasses, Object[] paramValues) {
-//        return doCreate(beanFactry, bean, paramClasses, paramValues);
-        Object proxyBean = null;
-        if (beanProxies.containsKey(bean)) {
-            proxyBean = beanProxies.get(bean);
+        Object existingProxy = beanProxies.putIfAbsent(bean, bean);
+        Object proxyBean;
+        if (existingProxy != null && existingProxy != bean) {
+            proxyBean = existingProxy;
+        } else if (existingProxy == bean) {
+            proxyBean = doCreate(beanFactry, bean, paramClasses, paramValues);
+            beanProxies.put(bean, proxyBean);
         } else {
-            synchronized (beanProxies) {
-                if (beanProxies.containsKey(bean)) {
-                    proxyBean = bean;
-                } else {
-                    proxyBean = doCreate(beanFactry, bean, paramClasses, paramValues);
-                }
-                beanProxies.put(bean, proxyBean);
-            }
+            proxyBean = bean;
         }
 
-        // in case of HA proxy set the target. It might be cleared by clearProxies
-        //   but the underlying bean did not change. We need this to resolve target bean
-        //   in org.hotswap.agent.plugin.spring.getbean.DetachableBeanHolder.getBean()
         if (proxyBean instanceof SpringHotswapAgentProxy) {
             ((SpringHotswapAgentProxy) proxyBean).$$ha$setTarget(bean);
         }

@@ -69,7 +69,7 @@ public class SchedulerImplTest {
 
         scheduler.scheduleCommand(command);
 
-        assertTrue("Event listener not called", WaitHelper.waitForResult(resultHolder));
+        assertTrue("Event listener not called", WaitHelper.waitForResult(resultHolder, 5000));
     }
 
 

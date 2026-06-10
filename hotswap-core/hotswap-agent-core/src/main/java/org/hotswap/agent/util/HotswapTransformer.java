@@ -26,7 +26,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -70,11 +70,11 @@ public class HotswapTransformer implements ClassFileTransformer {
         List<HaClassFileTransformer> transformerList = new LinkedList<>();
     }
 
-    protected Map<String, RegisteredTransformersRecord> redefinitionTransformers = new LinkedHashMap<>();
-    protected Map<String, RegisteredTransformersRecord> otherTransformers = new LinkedHashMap<>();
+    protected Map<String, RegisteredTransformersRecord> redefinitionTransformers = new ConcurrentHashMap<>();
+    protected Map<String, RegisteredTransformersRecord> otherTransformers = new ConcurrentHashMap<>();
 
     // keep track about which classloader requested which transformer
-    protected Map<ClassFileTransformer, ClassLoader> classLoaderTransformers = new LinkedHashMap<>();
+    protected Map<ClassFileTransformer, ClassLoader> classLoaderTransformers = new ConcurrentHashMap<>();
 
     protected Map<ClassLoader, Object> seenClassLoaders = new WeakHashMap<>();
 
@@ -222,7 +222,7 @@ public class HotswapTransformer implements ClassFileTransformer {
                     }
                 }
             }
-        } catch (Throwable t) {
+        } catch (Exception t) {
             LOGGER.error("Error transforming class '" + className + "'.", t);
         }
 
@@ -251,7 +251,7 @@ public class HotswapTransformer implements ClassFileTransformer {
                result = transformer.transform(classLoader, className, redefiningClass, protectionDomain, result);
            }
            return result;
-       } catch (Throwable t) {
+       } catch (Exception t) {
            LOGGER.error("Error transforming class '" + className + "'.", t);
        }
        return bytes;

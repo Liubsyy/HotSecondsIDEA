@@ -158,6 +158,9 @@ public class ReflectionCommand extends MergeableCommand {
             Thread.currentThread().setContextClassLoader(getTargetClassLoader());
 
         ClassLoader targetClassLoader = Thread.currentThread().getContextClassLoader();
+        if (targetClassLoader == null) {
+            targetClassLoader = ClassLoader.getSystemClassLoader();
+        }
 
         String className = getClassName();
         String method = getMethodName();

@@ -23,10 +23,9 @@ import java.lang.instrument.ClassDefinition;
 import java.lang.instrument.Instrumentation;
 import java.security.ProtectionDomain;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 import org.hotswap.agent.command.Scheduler;
 import org.hotswap.agent.command.impl.SchedulerImpl;
@@ -149,8 +148,8 @@ public class PluginManager {
     }
 
     ClassLoaderDefineClassPatcher classLoaderPatcher = new ClassLoaderDefineClassPatcher();
-    Map<ClassLoader, PluginConfiguration> classLoaderConfigurations = new HashMap<>();
-    Set<ClassLoaderInitListener> classLoaderInitListeners = new HashSet<>();
+    ConcurrentHashMap<ClassLoader, PluginConfiguration> classLoaderConfigurations = new ConcurrentHashMap<>();
+    CopyOnWriteArraySet<ClassLoaderInitListener> classLoaderInitListeners = new CopyOnWriteArraySet<>();
 
     public void registerClassLoaderInitListener(ClassLoaderInitListener classLoaderInitListener) {
         classLoaderInitListeners.add(classLoaderInitListener);

@@ -37,9 +37,13 @@ public class HotSecondsEntrance {
 
     public static void premain(String args, Instrumentation inst) throws Exception {
         start0(args,inst);
-        AgentLogger.getHandler().setPrintStream(
-                new PrintStream(new FileOutputStream("hotseconds_core.log", false)));
+        FileOutputStream fos = new FileOutputStream("hotseconds_core.log", false);
+        AgentLogger.getHandler().setPrintStream(new PrintStream(fos));
         HotswapAgent.premain(args,inst);
+        try {
+            fos.close();
+        } catch (Exception e) {
+        }
     }
 
 

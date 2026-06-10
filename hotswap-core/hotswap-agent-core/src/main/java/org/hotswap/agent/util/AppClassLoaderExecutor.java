@@ -62,7 +62,7 @@ public class AppClassLoaderExecutor {
             }
         }
 
-        Object instance = classInAppClassLoader.newInstance();
+        Object instance = classInAppClassLoader.getDeclaredConstructor().newInstance();
         Method m = classInAppClassLoader.getDeclaredMethod(method, paramTypes);
 
         Thread.currentThread().setContextClassLoader(appClassLoader);

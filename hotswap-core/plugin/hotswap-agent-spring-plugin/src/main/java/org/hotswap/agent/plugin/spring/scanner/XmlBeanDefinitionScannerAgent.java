@@ -36,6 +36,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  * IMPORTANT: DON'T REFER TO THIS CLASS IN OTHER CLASS!!
@@ -89,17 +90,18 @@ public class XmlBeanDefinitionScannerAgent {
         }
     }
 
-    private static boolean basePackageInited = false;
+    private static Map<ClassLoader, Boolean> basePackageInitedMap = new WeakHashMap<>();
 
     private XmlBeanDefinitionScannerAgent(BeanDefinitionReader reader) {
         this.reader = reader;
 
-        if (SpringPlugin.basePackagePrefixes != null && !basePackageInited) {
+        ClassLoader cl = reader.getRegistry().getClass().getClassLoader();
+        if (SpringPlugin.basePackagePrefixes != null && !basePackageInitedMap.containsKey(cl)) {
             ClassPathBeanDefinitionScannerAgent xmlBeanDefinitionScannerAgent = ClassPathBeanDefinitionScannerAgent.getInstance(new ClassPathBeanDefinitionScanner(reader.getRegistry()));
             for (String basePackage : SpringPlugin.basePackagePrefixes) {
                 xmlBeanDefinitionScannerAgent.registerBasePackage(basePackage);
             }
-            basePackageInited = true;
+            basePackageInitedMap.put(cl, true);
         }
     }
 
@@ -144,11 +146,7 @@ public class XmlBeanDefinitionScannerAgent {
      */
     public void reloadBeanFromXml(URL url) {
         LOGGER.info("Reloading XML file: " + url);
-        // this will call registerBeanDefinition which in turn call resetBeanDefinition to destroy singleton
-        // maybe should use watchResourceClassLoader.getResource?
         this.reader.loadBeanDefinitions(new FileSystemResource(url.getPath()));
-        // spring won't rebuild dependency map if injectionMetadataCache is not cleared
-        // which lead to singletons depend on beans in xml won't be destroy and recreate, may be a spring bug?
         ResetBeanPostProcessorCaches.reset(maybeRegistryToBeanFactory());
         ProxyReplacer.clearAllProxies();
         reloadFlag = false;

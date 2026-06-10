@@ -21,18 +21,20 @@ package org.hotswap.agent.plugin.mybatis.proxy;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 
 import org.apache.ibatis.builder.xml.XMLConfigBuilder;
+import org.apache.ibatis.builder.xml.XMLMapperBuilder;
+import org.apache.ibatis.parsing.XPathParser;
 import org.apache.ibatis.session.Configuration;
 import org.hotswap.agent.javassist.util.proxy.MethodHandler;
 import org.hotswap.agent.javassist.util.proxy.Proxy;
 import org.hotswap.agent.javassist.util.proxy.ProxyFactory;
+import org.hotswap.agent.logging.AgentLogger;
 import org.hotswap.agent.plugin.mybatis.transformers.MyBatisTransformers;
+import org.hotswap.agent.plugin.mybatis.transformers.XPathParserCaller;
 import org.hotswap.agent.util.ReflectionHelper;
-
-import sun.reflect.ReflectionFactory;
 
 /**
  * The Class ConfigurationProxy.
@@ -40,7 +42,9 @@ import sun.reflect.ReflectionFactory;
  * @author Vladimir Dvorak
  */
 public class ConfigurationProxy {
-    private static Map<XMLConfigBuilder, ConfigurationProxy> proxiedConfigurations = new HashMap<>();
+    private static AgentLogger LOGGER = AgentLogger.getLogger(ConfigurationProxy.class);
+    private static Map<XMLConfigBuilder, ConfigurationProxy> proxiedConfigurations = new ConcurrentHashMap<>();
+    private static Map<String, XMLMapperBuilder> mapperBuilderMap = new ConcurrentHashMap<>();
 
     public static ConfigurationProxy getWrapper(XMLConfigBuilder configBuilder) {
         if (!proxiedConfigurations.containsKey(configBuilder)) {
@@ -54,8 +58,28 @@ public class ConfigurationProxy {
             try {
                 wrapper.refreshProxiedConfiguration();
             } catch (Exception e) {
-                e.printStackTrace();
+                LOGGER.error("Error refreshing proxied configuration", e);
             }
+    }
+
+    public static void registerMapperBuilder(String resourcePath, XMLMapperBuilder mapperBuilder) {
+        mapperBuilderMap.put(resourcePath, mapperBuilder);
+    }
+
+    public static boolean refreshSingleMapper(String resourcePath) {
+        XMLMapperBuilder mapperBuilder = mapperBuilderMap.get(resourcePath);
+        if (mapperBuilder == null) {
+            return false;
+        }
+        try {
+            XPathParser parser = (XPathParser) ReflectionHelper.get(mapperBuilder, "parser");
+            XPathParserCaller.refreshDocument(parser);
+            mapperBuilder.parse();
+            return true;
+        } catch (Exception e) {
+            LOGGER.error("Error refreshing single mapper: " + resourcePath, e);
+            return false;
+        }
     }
 
     private ConfigurationProxy(XMLConfigBuilder configBuilder) {
@@ -86,7 +110,9 @@ public class ConfigurationProxy {
             };
 
             try {
-                Constructor constructor = ReflectionFactory.getReflectionFactory().newConstructorForSerialization(factory.createClass(), Object.class.getDeclaredConstructor(new Class[0]));
+                Class proxyClass = factory.createClass();
+                Constructor constructor = proxyClass.getDeclaredConstructor(new Class[0]);
+                constructor.setAccessible(true);
                 proxyInstance = (Configuration) constructor.newInstance();
                 ((Proxy) proxyInstance).setHandler(handler);
             } catch (Exception e) {

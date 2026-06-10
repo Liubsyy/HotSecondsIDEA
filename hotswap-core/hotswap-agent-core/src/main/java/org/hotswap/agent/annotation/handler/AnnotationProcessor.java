@@ -26,8 +26,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Process annotations on a plugin, register appropriate handlers.
@@ -45,7 +45,7 @@ public class AnnotationProcessor {
     }
 
     protected Map<Class<? extends Annotation>, PluginHandler> handlers =
-            new HashMap<Class<? extends Annotation>, PluginHandler>();
+            new ConcurrentHashMap<>();
 
     public void init(PluginManager pluginManager) {
         addAnnotationHandler(Init.class, new InitHandler(pluginManager));
@@ -91,7 +91,7 @@ public class AnnotationProcessor {
             }
 
             return true;
-        } catch (Throwable e) {
+        } catch (Exception e) {
             LOGGER.error("Unable to process plugin annotations '{}'", e, pluginClass);
             return false;
         }

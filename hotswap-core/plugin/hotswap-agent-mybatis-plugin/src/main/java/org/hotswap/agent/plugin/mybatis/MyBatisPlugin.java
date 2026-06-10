@@ -28,7 +28,7 @@ import org.hotswap.agent.logging.AgentLogger;
 import org.hotswap.agent.plugin.mybatis.transformers.MyBatisTransformers;
 
 import java.net.URL;
-import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.Map;
 
 /**
@@ -50,10 +50,13 @@ public class MyBatisPlugin {
     @Init
     ClassLoader appClassLoader;
 
-    Map<String, Object> configurationMap = new HashMap<>();
+    Map<String, Object> configurationMap = new ConcurrentHashMap<>();
 
     Command reloadConfigurationCommand =
             new ReflectionCommand(this, MyBatisRefreshCommands.class.getName(), "reloadConfiguration");
+
+    Command reloadSingleMapperCommand =
+            new ReflectionCommand(this, MyBatisRefreshCommands.class.getName(), "reloadSingleMapper");
 
     @Init
     public void init(PluginConfiguration pluginConfiguration) {
@@ -67,10 +70,31 @@ public class MyBatisPlugin {
         }
     }
 
+    public void registerMapperBuilder(String resourcePath, Object mapperBuilder) {
+        if (resourcePath != null && mapperBuilder instanceof org.apache.ibatis.builder.xml.XMLMapperBuilder) {
+            LOGGER.debug("MyBatisPlugin - mapper builder registered : {}", resourcePath);
+            org.hotswap.agent.plugin.mybatis.proxy.ConfigurationProxy.registerMapperBuilder(
+                    resourcePath, (org.apache.ibatis.builder.xml.XMLMapperBuilder) mapperBuilder);
+        }
+    }
+
+    public void registerAnnotationMapperConfig(String basePackage, Object scannerConfigurer) {
+        if (basePackage != null && !configurationMap.containsKey(basePackage)) {
+            LOGGER.debug("MyBatisPlugin - annotation mapper config registered : {}", basePackage);
+            configurationMap.put(basePackage, scannerConfigurer);
+        }
+    }
+
     @OnResourceFileEvent(path="/", filter = ".*.xml", events = {FileEvent.MODIFY})
     public void registerResourceListeners(URL url) {
-        if (configurationMap.containsKey(url.getPath())) {
-            refresh(500);
+        String path = url.getPath();
+        if (configurationMap.containsKey(path)) {
+            if (path.endsWith("mybatis-config.xml") || path.endsWith("mybatis-configuration.xml")) {
+                refresh(500);
+            } else {
+                Command singleMapperCmd = new ReflectionCommand(this, MyBatisRefreshCommands.class.getName(), "reloadSingleMapper", new Class[]{String.class}, new Object[]{path});
+                scheduler.scheduleCommand(singleMapperCmd, 500);
+            }
         }
     }
 
@@ -121,6 +145,25 @@ public class MyBatisPlugin {
         CtMethod removeMappedStatementMethod = CtNewMethod.make("public void $$removeMappedStatement(String statementName){if(mappedStatements.containsKey(statementName)){mappedStatements.remove(statementName);}}", ctClass);
         ctClass.addMethod(removeMappedStatementMethod);
         ctClass.getDeclaredMethod("addMappedStatement", new CtClass[]{classPool.get("org.apache.ibatis.mapping.MappedStatement")}).insertBefore("$$removeMappedStatement($1.getId());");
+
+        try {
+            CtMethod addResultMapMethod = ctClass.getDeclaredMethod("addResultMap", new CtClass[]{classPool.get("org.apache.ibatis.mapping.ResultMap")});
+            addResultMapMethod.insertBefore("if(resultMaps.containsKey($1.getId())){resultMaps.remove($1.getId());}");
+        } catch (NotFoundException e) {
+            LOGGER.debug("MybatisConfiguration.addResultMap not found, skipping.");
+        }
+        try {
+            CtMethod addParameterMapMethod = ctClass.getDeclaredMethod("addParameterMap", new CtClass[]{classPool.get("org.apache.ibatis.mapping.ParameterMap")});
+            addParameterMapMethod.insertBefore("if(parameterMaps.containsKey($1.getId())){parameterMaps.remove($1.getId());}");
+        } catch (NotFoundException e) {
+            LOGGER.debug("MybatisConfiguration.addParameterMap not found, skipping.");
+        }
+        try {
+            CtMethod addCacheMethod = ctClass.getDeclaredMethod("addCache", new CtClass[]{classPool.get("org.apache.ibatis.cache.Cache")});
+            addCacheMethod.insertBefore("if(caches.containsKey($1.getId())){caches.remove($1.getId());}");
+        } catch (NotFoundException e) {
+            LOGGER.debug("MybatisConfiguration.addCache not found, skipping.");
+        }
     }
 
 

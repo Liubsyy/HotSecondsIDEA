@@ -264,7 +264,10 @@ public class SpringPlugin {
         CtMethod method = clazz.getDeclaredMethod("freezeConfiguration");
         method.insertBefore(
                 "org.hotswap.agent.plugin.spring.ResetSpringStaticCaches.resetBeanNamesByType(this); " +
-                "setAllowRawInjectionDespiteWrapping(true); ");
+                "boolean _ha_allowRawInjection = !isAllowRawInjectionDespiteWrapping(); " +
+                "if(_ha_allowRawInjection) { setAllowRawInjectionDespiteWrapping(true); } ");
+        method.insertAfter(
+                "if(_ha_allowRawInjection) { setAllowRawInjectionDespiteWrapping(false); } ");
     }
 
     @OnClassLoadEvent(classNameRegexp = "org.springframework.aop.framework.CglibAopProxy")
@@ -277,5 +280,19 @@ public class SpringPlugin {
                 "}");
 
         LOGGER.debug("org.springframework.aop.framework.CglibAopProxy - cglib Enhancer cache disabled");
+    }
+
+    @OnClassLoadEvent(classNameRegexp = "org.springframework.context.annotation.ConfigurationClassPostProcessor")
+    public static void patchConfigurationClassPostProcessor(CtClass ctClass) throws NotFoundException, CannotCompileException {
+        try {
+            CtMethod processConfigMethod = ctClass.getDeclaredMethod("processConfigBeanDefinitions",
+                    new CtClass[]{ctClass.getClassPool().get("org.springframework.beans.factory.support.BeanDefinitionRegistry")});
+            processConfigMethod.insertAfter(
+                    "org.hotswap.agent.plugin.spring.ResetSpringStaticCaches.reset();"
+            );
+            LOGGER.debug("ConfigurationClassPostProcessor patched for @Configuration @Bean method change support.");
+        } catch (NotFoundException e) {
+            LOGGER.debug("ConfigurationClassPostProcessor.processConfigBeanDefinitions not found, skipping patch (older Spring version).");
+        }
     }
 }

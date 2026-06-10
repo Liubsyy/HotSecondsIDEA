@@ -31,8 +31,11 @@ import java.lang.instrument.Instrumentation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Annotation handler - handle @Init annotation on fields/methods.
@@ -45,6 +48,8 @@ import java.util.List;
  */
 public class InitHandler implements PluginHandler<Init> {
     private static AgentLogger LOGGER = AgentLogger.getLogger(InitHandler.class);
+
+    private static final Map<Method, Class[]> methodParamTypesCache = new ConcurrentHashMap<>();
 
     protected PluginManager pluginManager;
 
@@ -97,7 +102,9 @@ public class InitHandler implements PluginHandler<Init> {
     // resolve all method parameter types to actual values and invoke the plugin method (both static and non static)
     private boolean invokeInitMethod(PluginAnnotation pluginAnnotation, Object plugin, ClassLoader classLoader) {
         List<Object> args = new ArrayList<>();
-        for (Class type : pluginAnnotation.getMethod().getParameterTypes()) {
+        Method method = pluginAnnotation.getMethod();
+        Class[] paramTypes = methodParamTypesCache.computeIfAbsent(method, m -> m.getParameterTypes());
+        for (Class type : paramTypes) {
             args.add(resolveType(classLoader, pluginAnnotation.getPluginClass(), type));
         }
         try {

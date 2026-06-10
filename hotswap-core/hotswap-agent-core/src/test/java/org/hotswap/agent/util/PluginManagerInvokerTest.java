@@ -55,7 +55,7 @@ public class PluginManagerInvokerTest {
 
 
         Method testMethod = testClass.getDeclaredMethod("test");
-        testMethod.invoke(testClass.newInstance());
+        testMethod.invoke(testClass.getDeclaredConstructor().newInstance());
 
 
     }

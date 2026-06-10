@@ -95,9 +95,11 @@ public class MyBatisTransformers {
         ctClass.getDeclaredConstructor(constructorParams).insertAfter(src.toString());
         CtMethod newMethod = CtNewMethod.make(
                 "public void " + REFRESH_METHOD + "() {" +
+                        "synchronized(this) {" +
                         "if(" + XPathParserCaller.class.getName() + ".refreshDocument(this.parser)) {" +
                         "this.parsed=false;" +
                         "parse();" +
+                        "}" +
                         "}" +
                         "}", ctClass);
         ctClass.addMethod(newMethod);
@@ -109,6 +111,8 @@ public class MyBatisTransformers {
         StringBuilder src = new StringBuilder("{");
         src.append(PluginManagerInvoker.buildInitializePlugin(MyBatisPlugin.class));
         src.append(PluginManagerInvoker.buildCallPluginMethod(MyBatisPlugin.class, "registerConfigurationFile",
+                XPathParserCaller.class.getName() + ".getSrcFileName(this.parser)", "java.lang.String", "this", "java.lang.Object"));
+        src.append(PluginManagerInvoker.buildCallPluginMethod(MyBatisPlugin.class, "registerMapperBuilder",
                 XPathParserCaller.class.getName() + ".getSrcFileName(this.parser)", "java.lang.String", "this", "java.lang.Object"));
         src.append("}");
 
@@ -124,11 +128,48 @@ public class MyBatisTransformers {
         LOGGER.debug("org.apache.ibatis.builder.xml.XMLMapperBuilder patched.");
     }
 
-    @OnClassLoadEvent(classNameRegexp = "org.apache.ibatis.session.defaults.DefaultSqlSessionFactory")
+    @OnClassLoadEvent(classNameRegexp = "org.mybatis.spring.MapperFactoryBean")
+    public static void patchMapperFactoryBean(CtClass ctClass, ClassPool classPool) throws NotFoundException, CannotCompileException {
+        CtField mapperInterfaceField = ctClass.getField("mapperInterface");
+        mapperInterfaceField.setModifiers(mapperInterfaceField.getModifiers() & ~AccessFlag.FINAL);
+
+        StringBuilder src = new StringBuilder("{");
+        src.append(PluginManagerInvoker.buildInitializePlugin(MyBatisPlugin.class));
+        src.append("}");
+
+        CtConstructor[] constructors = ctClass.getDeclaredConstructors();
+        for (CtConstructor constructor : constructors) {
+            constructor.insertAfter(src.toString());
+        }
+
+        LOGGER.debug("org.mybatis.spring.MapperFactoryBean patched for annotation-based mapper support.");
+    }
+
+    @OnClassLoadEvent(classNameRegexp = "org.mybatis.spring.mapper.MapperScannerConfigurer")
+    public static void patchMapperScannerConfigurer(CtClass ctClass, ClassPool classPool) throws NotFoundException, CannotCompileException {
+        StringBuilder src = new StringBuilder("{");
+        src.append(PluginManagerInvoker.buildInitializePlugin(MyBatisPlugin.class));
+        src.append(PluginManagerInvoker.buildCallPluginMethod(MyBatisPlugin.class, "registerAnnotationMapperConfig",
+                "this.basePackage", "java.lang.String", "this", "java.lang.Object"));
+        src.append("}");
+
+        try {
+            CtMethod postProcessMethod = ctClass.getDeclaredMethod("postProcessBeanDefinitionRegistry",
+                    new CtClass[]{classPool.get("org.springframework.beans.factory.support.BeanDefinitionRegistry")});
+            postProcessMethod.insertAfter(src.toString());
+        } catch (NotFoundException e) {
+            LOGGER.debug("MapperScannerConfigurer.postProcessBeanDefinitionRegistry not found, skipping.");
+        }
+
+        LOGGER.debug("org.mybatis.spring.mapper.MapperScannerConfigurer patched.");
+    }
     public static void patchDefaultSqlSessionFactory(CtClass ctClass, ClassPool classPool) throws NotFoundException, CannotCompileException {
-        ctClass.addField(CtField.make("public static java.util.ArrayList  _staticConfiguration = new java.util.ArrayList();", ctClass));
+        ctClass.addField(CtField.make("public static java.util.WeakHashMap _staticConfiguration = new java.util.WeakHashMap();", ctClass));
         CtConstructor constructor = ctClass.getDeclaredConstructor(new CtClass[] { classPool.get("org.apache.ibatis.session.Configuration")});
-        constructor.insertAfter("{_staticConfiguration.add($1);}");
+        constructor.insertAfter("{java.lang.ClassLoader cl = $1.getClass().getClassLoader();" +
+                "java.util.ArrayList list = (java.util.ArrayList)_staticConfiguration.get(cl);" +
+                "if(list == null) { list = new java.util.ArrayList(); _staticConfiguration.put(cl, list); }" +
+                "list.add($1);}");
         LOGGER.debug("org.apache.ibatis.session.defaults.DefaultSqlSessionFactory patched.");
     }
 

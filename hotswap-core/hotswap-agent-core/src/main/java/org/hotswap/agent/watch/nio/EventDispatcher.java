@@ -172,9 +172,8 @@ public class EventDispatcher implements Runnable {
                     WatchFileEvent agentEvent = new HotswapWatchFileEvent(event, path);
                     try {
                         listener.onEvent(agentEvent);
-                    } catch (Throwable e) {
-                        // LOGGER.error("Error in watch event '{}' listener
-                        // '{}'", e, agentEvent, listener);
+                    } catch (Exception e) {
+                        LOGGER.warning("Error in watch event '{}' listener '{}'", e, agentEvent, listener);
                     }
                 }
             }

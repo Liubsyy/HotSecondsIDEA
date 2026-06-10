@@ -32,17 +32,24 @@ import org.hotswap.agent.plugin.mybatis.proxy.ConfigurationProxy;
 public class MyBatisRefreshCommands {
     private static AgentLogger LOGGER = AgentLogger.getLogger(MyBatisRefreshCommands.class);
 
-    /**
-     * Flag to check reload status.
-     * In unit test we need to wait for reload finish before the test can continue. Set flag to true
-     * in the test class and wait until the flag is false again.
-     */
     public static boolean reloadFlag = false;
 
     public static void reloadConfiguration() {
         LOGGER.debug("Refreshing MyBatis configuration.");
         ConfigurationProxy.refreshProxiedConfigurations();
         LOGGER.reload("MyBatis configuration refreshed.");
+        reloadFlag = false;
+    }
+
+    public static void reloadSingleMapper(String resourcePath) {
+        LOGGER.debug("Refreshing single mapper: {}", resourcePath);
+        boolean refreshed = ConfigurationProxy.refreshSingleMapper(resourcePath);
+        if (refreshed) {
+            LOGGER.reload("MyBatis mapper '{}' refreshed.", resourcePath);
+        } else {
+            LOGGER.warning("Mapper '{}' not found, falling back to full configuration refresh.", resourcePath);
+            ConfigurationProxy.refreshProxiedConfigurations();
+        }
         reloadFlag = false;
     }
 }

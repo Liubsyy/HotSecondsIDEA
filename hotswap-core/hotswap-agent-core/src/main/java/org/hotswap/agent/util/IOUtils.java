@@ -63,14 +63,18 @@ public class IOUtils {
     public static byte[] toByteArray(URI uri) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        InputStream inputStream = null;
         int tryCount = 0;
-        while (inputStream == null) {
-            try {
-                inputStream = uri.toURL().openStream();
+        while (true) {
+            try (InputStream inputStream = uri.toURL().openStream()) {
+                byte[] chunk = new byte[4096];
+                int bytesRead;
+
+                while ((bytesRead = inputStream.read(chunk)) > 0) {
+                    outputStream.write(chunk, 0, bytesRead);
+                }
+
+                return outputStream.toByteArray();
             } catch (FileNotFoundException e) {
-                // some IDEs remove and recreate whole package multiple times while recompiling -
-                // we may need to waitForResult for the file.
                 if (tryCount > WAIT_FOR_FILE_MAX_SECONDS * 10) {
                     LOGGER.trace("File not found, exiting with exception...", e);
                     throw new IllegalArgumentException(e);
@@ -82,33 +86,10 @@ public class IOUtils {
                     } catch (InterruptedException e1) {
                     }
                 }
-            } catch (Exception e) {
-                throw new IllegalStateException(e);
-            }
-            finally {
-                if (inputStream != null) {
-                    try {
-                        inputStream.close();
-                    } catch (IOException e) {
-                        LOGGER.error("Can't close file.", e);
-                    }
-                }
+            } catch (IOException e) {
+                throw new IllegalArgumentException(e);
             }
         }
-
-        try (InputStream stream = uri.toURL().openStream()) {
-            byte[] chunk = new byte[4096];
-            int bytesRead;
-
-            while ((bytesRead = stream.read(chunk)) > 0) {
-                outputStream.write(chunk, 0, bytesRead);
-            }
-
-        } catch (IOException e) {
-            throw new IllegalArgumentException(e);
-        }
-
-        return outputStream.toByteArray();
     }
 
     /**
@@ -147,6 +128,7 @@ public class IOUtils {
                 return true;
             }
         } catch (Exception e) {
+            LOGGER.debug("isDirectoryURL check failed", e);
         }
         return false;
     }
@@ -159,7 +141,9 @@ public class IOUtils {
      * @throws IOException any exception on class instantiation
      */
     public static String urlToClassName(URI uri) throws IOException {
-        return ClassPool.getDefault().makeClass(uri.toURL().openStream()).getName();
+        try (InputStream stream = uri.toURL().openStream()) {
+            return ClassPool.getDefault().makeClass(stream).getName();
+        }
     }
 
     /**
